@@ -6,27 +6,13 @@ const MOTO_IMAGE =
 const LOGO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/02ccc225-3a2f-4cbe-b806-29801425921f.png";
 
-const PRODUCTS = [
-  {
-    name: "Черепаха",
-    image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/67e08aea-f35a-49c1-973e-f7c3c6b46a92.jpg",
-  },
-  {
-    name: "Перчатки",
-    image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/746d157d-4dae-4fa9-afec-c81c97ea2d72.jpg",
-  },
-  {
-    name: "Шлем",
-    image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e33c1ea6-1b6e-451b-850b-2743f8044c03.png",
-  },
-  {
-    name: "Очки",
-    image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/82f39a0d-1aed-4217-a4be-67e69464f066.jpg",
-  },
-  {
-    name: "Защита",
-    image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/4167775e-c0dd-4c55-96ce-260c675f57a5.jpg",
-  },
+const GEAR_ITEMS = [
+  "Шлемы для мотокросса",
+  "Моточерепахи",
+  "Наколенники",
+  "Налокотники",
+  "Перчатки",
+  "Очки",
 ];
 
 const Index = () => {
@@ -116,54 +102,34 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Products photo row */}
+            {/* Gear grid — 2 columns */}
             <div
               style={{
-                display: "flex",
-                gap: "clamp(4px, 0.6vw, 10px)",
-                marginTop: "clamp(2px, 0.3vw, 6px)",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "clamp(2px, 0.4vw, 5px) clamp(8px, 1vw, 16px)",
               }}
             >
-              {PRODUCTS.map((p) => (
-                <div
-                  key={p.name}
-                  style={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "clamp(2px, 0.3vw, 5px)",
-                  }}
-                >
+              {GEAR_ITEMS.map((item) => (
+                <div key={item} className="flex items-center gap-1.5">
                   <div
                     style={{
-                      background: "rgba(255,255,255,0.97)",
-                      borderRadius: 3,
-                      border: "1.5px solid rgba(204,0,0,0.35)",
-                      width: "100%",
-                      aspectRatio: "1/1",
-                      overflow: "hidden",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      width: "clamp(4px, 0.45vw, 6px)",
+                      height: "clamp(4px, 0.45vw, 6px)",
+                      background: "#CC0000",
+                      flexShrink: 0,
+                      transform: "rotate(45deg)",
                     }}
-                  >
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      style={{ width: "90%", height: "90%", objectFit: "contain" }}
-                    />
-                  </div>
+                  />
                   <span
-                    className="font-oswald text-white text-center"
+                    className="font-oswald text-white"
                     style={{
-                      fontSize: "clamp(7px, 1vw, 13px)",
-                      letterSpacing: "0.04em",
-                      textTransform: "uppercase",
-                      lineHeight: 1.1,
+                      fontSize: "clamp(10px, 1.75vw, 22px)",
+                      letterSpacing: "0.02em",
+                      lineHeight: 1.15,
                     }}
                   >
-                    {p.name}
+                    {item}
                   </span>
                 </div>
               ))}
