@@ -4,7 +4,7 @@ const MOTO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/files/d403021e-fe56-4fd3-a30a-c51518c97a3f.jpg";
 
 const LOGO_IMAGE =
-  "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/7e22f5ac-56aa-47da-8495-83dd6cd6cb59.png";
+  "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/02ccc225-3a2f-4cbe-b806-29801425921f.png";
 
 const GEAR_ITEMS = [
   "Шлемы для мотокросса",
@@ -113,9 +113,23 @@ const Index = () => {
           <div
             className="flex flex-col justify-center flex-1 px-6 py-5"
           >
+            {/* Big heading */}
+            <div
+              className="font-oswald font-bold text-white mb-1"
+              style={{
+                fontSize: "clamp(14px, 2.6vw, 34px)",
+                letterSpacing: "0.04em",
+                lineHeight: 1,
+                textTransform: "uppercase",
+              }}
+            >
+              Магазин{" "}
+              <span style={{ color: "#CC0000" }}>мотоэкипировки</span>
+            </div>
+
             {/* Label */}
             <div
-              className="font-roboto uppercase mb-3"
+              className="font-roboto uppercase mb-3 mt-2"
               style={{
                 fontSize: "clamp(7px, 0.85vw, 10px)",
                 color: "rgba(255,255,255,0.45)",
@@ -201,25 +215,16 @@ const Index = () => {
                 Звоните
               </div>
               <div
-                className="font-oswald font-bold text-white"
-                style={{
-                  fontSize: "clamp(13px, 2.2vw, 28px)",
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.1,
-                }}
-              >
-                +7 (985)
-              </div>
-              <div
                 className="font-oswald font-bold"
                 style={{
-                  fontSize: "clamp(13px, 2.2vw, 28px)",
-                  color: "#CC0000",
+                  fontSize: "clamp(13px, 2vw, 26px)",
                   letterSpacing: "-0.01em",
                   lineHeight: 1.1,
+                  color: "#CC0000",
+                  whiteSpace: "nowrap",
                 }}
               >
-                361-55-17
+                <span className="text-white">+7 (985) </span>361-55-17
               </div>
             </div>
 
