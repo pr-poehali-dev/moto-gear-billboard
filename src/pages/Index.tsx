@@ -6,13 +6,11 @@ const MOTO_IMAGE =
 const LOGO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/02ccc225-3a2f-4cbe-b806-29801425921f.png";
 
-const GEAR_ITEMS = [
-  "Шлемы для мотокросса",
-  "Моточерепахи",
-  "Наколенники",
-  "Налокотники",
-  "Перчатки",
-  "Очки",
+const PRODUCTS = [
+  { name: "Черепаха", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
+  { name: "Шлем", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/7bf8268e-d640-434b-8931-60b4ae604e3d.png" },
+  { name: "Перчатки", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
+  { name: "Защита", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
 const Index = () => {
@@ -102,34 +100,30 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Gear grid — 2 columns */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "clamp(2px, 0.4vw, 5px) clamp(8px, 1vw, 16px)",
-              }}
-            >
-              {GEAR_ITEMS.map((item) => (
-                <div key={item} className="flex items-center gap-1.5">
+            {/* Products photo row */}
+            <div style={{ display: "flex", gap: "clamp(4px, 0.7vw, 10px)" }}>
+              {PRODUCTS.map((p) => (
+                <div key={p.name} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "clamp(2px, 0.3vw, 4px)" }}>
                   <div
                     style={{
-                      width: "clamp(4px, 0.45vw, 6px)",
-                      height: "clamp(4px, 0.45vw, 6px)",
-                      background: "#CC0000",
-                      flexShrink: 0,
-                      transform: "rotate(45deg)",
-                    }}
-                  />
-                  <span
-                    className="font-oswald text-white"
-                    style={{
-                      fontSize: "clamp(10px, 1.75vw, 22px)",
-                      letterSpacing: "0.02em",
-                      lineHeight: 1.15,
+                      background: "rgba(255,255,255,0.96)",
+                      border: "1.5px solid rgba(204,0,0,0.4)",
+                      borderRadius: 3,
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      overflow: "hidden",
                     }}
                   >
-                    {item}
+                    <img src={p.image} alt={p.name} style={{ width: "88%", height: "88%", objectFit: "contain" }} />
+                  </div>
+                  <span
+                    className="font-oswald text-white text-center"
+                    style={{ fontSize: "clamp(7px, 1vw, 13px)", letterSpacing: "0.06em", textTransform: "uppercase" }}
+                  >
+                    {p.name}
                   </span>
                 </div>
               ))}
