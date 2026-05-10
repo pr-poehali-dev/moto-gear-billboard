@@ -215,7 +215,7 @@ const Index = () => {
               <div
                 className="font-oswald font-bold"
                 style={{
-                  fontSize: "clamp(12px, 1.9vw, 24px)",
+                  fontSize: "clamp(18px, 2.8vw, 36px)",
                   letterSpacing: "-0.01em",
                   lineHeight: 1.1,
                   whiteSpace: "nowrap",
