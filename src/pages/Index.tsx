@@ -103,7 +103,7 @@ const Index = () => {
             {/* Products photo row */}
             <div style={{ display: "flex", gap: "clamp(4px, 0.7vw, 10px)" }}>
               {PRODUCTS.map((p) => (
-                <div key={p.name} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "clamp(2px, 0.3vw, 4px)" }}>
+                <div key={p.name} style={{ flex: p.name === "Шлем" ? 1.6 : 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "clamp(2px, 0.3vw, 4px)" }}>
                   <div
                     style={{
                       background: "rgba(255,255,255,0.96)",
