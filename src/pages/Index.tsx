@@ -6,12 +6,12 @@ const EQUIPMENT_IMAGE =
 const Index = () => {
   return (
     <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-4">
-      {/* Billboard container - 3:1 ratio landscape */}
+      {/* Billboard 1150x630mm = ~1.826:1 ratio */}
       <div
         className="relative w-full overflow-hidden"
         style={{
-          maxWidth: "1200px",
-          aspectRatio: "3 / 1",
+          maxWidth: "1150px",
+          aspectRatio: "1150 / 630",
           background: "#0A0A0A",
           border: "6px solid #F5C518",
           boxShadow:
