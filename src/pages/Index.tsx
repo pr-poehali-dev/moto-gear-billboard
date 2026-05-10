@@ -58,16 +58,29 @@ const Index = () => {
             className="flex flex-col justify-center items-center py-3 px-3"
             style={{ width: "28%", borderRight: "1px solid rgba(204,0,0,0.3)" }}
           >
-            <img
-              src={LOGO_IMAGE}
-              alt="ARMORHEAD"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-                filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))",
-              }}
-            />
+            <div style={{
+              border: "2px solid #CC0000",
+              borderRadius: 4,
+              padding: "8px",
+              background: "rgba(0,0,0,0.55)",
+              boxShadow: "0 0 18px rgba(204,0,0,0.5), inset 0 0 12px rgba(0,0,0,0.4)",
+              width: "88%",
+              aspectRatio: "1/1",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+              <img
+                src={LOGO_IMAGE}
+                alt="ARMORHEAD"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 0 10px rgba(204,0,0,0.8)) brightness(1.15)",
+                }}
+              />
+            </div>
           </div>
 
           {/* CENTER — Main info */}
@@ -78,18 +91,17 @@ const Index = () => {
               <div
                 className="font-oswald font-bold"
                 style={{
-                  fontSize: "clamp(18px, 3.4vw, 44px)",
-                  letterSpacing: "0.03em",
-                  lineHeight: 0.95,
+                  fontSize: "clamp(26px, 5.2vw, 66px)",
+                  letterSpacing: "0.01em",
+                  lineHeight: 0.9,
                   textTransform: "uppercase",
                 }}
               >
-                <span className="text-white">Магазин</span>
-                <br />
-                <span style={{ color: "#CC0000" }}>мотоэкипировки</span>
+                <span className="text-white" style={{ display: "block" }}>Магазин</span>
+                <span style={{ color: "#CC0000", display: "block" }}>мотоэкипировки</span>
               </div>
               <div
-                className="font-roboto uppercase mt-1.5"
+                className="font-roboto uppercase mt-2"
                 style={{
                   fontSize: "clamp(6px, 0.75vw, 9px)",
                   color: "rgba(255,255,255,0.4)",
