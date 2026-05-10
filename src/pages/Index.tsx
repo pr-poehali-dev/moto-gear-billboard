@@ -58,29 +58,16 @@ const Index = () => {
             className="flex flex-col justify-center items-center py-3 px-3"
             style={{ width: "28%", borderRight: "1px solid rgba(204,0,0,0.3)" }}
           >
-            <div style={{
-              border: "2px solid #CC0000",
-              borderRadius: 4,
-              padding: "8px",
-              background: "rgba(0,0,0,0.55)",
-              boxShadow: "0 0 18px rgba(204,0,0,0.5), inset 0 0 12px rgba(0,0,0,0.4)",
-              width: "88%",
-              aspectRatio: "1/1",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <img
-                src={LOGO_IMAGE}
-                alt="ARMORHEAD"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  filter: "drop-shadow(0 0 10px rgba(204,0,0,0.8)) brightness(1.15)",
-                }}
-              />
-            </div>
+            <img
+              src={LOGO_IMAGE}
+              alt="ARMORHEAD"
+              style={{
+                width: "92%",
+                height: "85%",
+                objectFit: "contain",
+                filter: "brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.9))",
+              }}
+            />
           </div>
 
           {/* CENTER — Main info */}
