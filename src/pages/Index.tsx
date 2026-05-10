@@ -103,7 +103,7 @@ const Index = () => {
             {/* Products photo row */}
             <div style={{ display: "flex", gap: "clamp(4px, 0.7vw, 10px)" }}>
               {PRODUCTS.map((p) => (
-                <div key={p.name} style={{ flex: p.name === "Шлем" ? 1.6 : 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "clamp(2px, 0.3vw, 4px)" }}>
+                <div key={p.name} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "clamp(2px, 0.3vw, 4px)" }}>
                   <div
                     style={{
                       background: "rgba(255,255,255,0.96)",
@@ -117,7 +117,7 @@ const Index = () => {
                       overflow: "hidden",
                     }}
                   >
-                    <img src={p.image} alt={p.name} style={{ width: "88%", height: "88%", objectFit: "contain" }} />
+                    <img src={p.image} alt={p.name} style={{ width: p.name === "Шлем" ? "110%" : "88%", height: p.name === "Шлем" ? "110%" : "88%", objectFit: "contain" }} />
                   </div>
                   <span
                     className="font-oswald text-white text-center"
