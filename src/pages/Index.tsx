@@ -86,10 +86,10 @@ const Index = () => {
               src={LOGO_IMAGE}
               alt="ARMORHEAD"
               style={{
-                width: "clamp(100px, 18vw, 210px)",
-                height: "clamp(100px, 18vw, 210px)",
+                width: "clamp(160px, 26vw, 300px)",
+                height: "clamp(160px, 26vw, 300px)",
                 objectFit: "contain",
-                filter: "drop-shadow(0 0 12px rgba(204,0,0,0.6))",
+                filter: "drop-shadow(0 0 16px rgba(204,0,0,0.7))",
               }}
             />
 
@@ -236,57 +236,18 @@ const Index = () => {
             <div className="flex flex-col items-center gap-1">
               <div
                 style={{
-                  width: "clamp(50px, 7.5vw, 88px)",
-                  height: "clamp(50px, 7.5vw, 88px)",
+                  width: "clamp(60px, 9vw, 108px)",
+                  height: "clamp(60px, 9vw, 108px)",
                   background: "white",
-                  padding: "5px",
+                  padding: "4px",
                   borderRadius: "2px",
                 }}
               >
-                <svg
-                  viewBox="0 0 21 21"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ width: "100%", height: "100%" }}
-                >
-                  <rect x="1" y="1" width="7" height="7" fill="#000" />
-                  <rect x="2" y="2" width="5" height="5" fill="#fff" />
-                  <rect x="3" y="3" width="3" height="3" fill="#000" />
-                  <rect x="13" y="1" width="7" height="7" fill="#000" />
-                  <rect x="14" y="2" width="5" height="5" fill="#fff" />
-                  <rect x="15" y="3" width="3" height="3" fill="#000" />
-                  <rect x="1" y="13" width="7" height="7" fill="#000" />
-                  <rect x="2" y="14" width="5" height="5" fill="#fff" />
-                  <rect x="3" y="15" width="3" height="3" fill="#000" />
-                  <rect x="9" y="1" width="1" height="1" fill="#000" />
-                  <rect x="11" y="2" width="2" height="1" fill="#000" />
-                  <rect x="9" y="4" width="2" height="1" fill="#000" />
-                  <rect x="11" y="5" width="1" height="1" fill="#000" />
-                  <rect x="9" y="6" width="1" height="1" fill="#000" />
-                  <rect x="1" y="9" width="2" height="1" fill="#000" />
-                  <rect x="5" y="9" width="1" height="1" fill="#000" />
-                  <rect x="7" y="9" width="1" height="1" fill="#000" />
-                  <rect x="9" y="9" width="3" height="1" fill="#000" />
-                  <rect x="14" y="9" width="2" height="1" fill="#000" />
-                  <rect x="18" y="9" width="2" height="1" fill="#000" />
-                  <rect x="1" y="11" width="1" height="1" fill="#000" />
-                  <rect x="4" y="11" width="2" height="1" fill="#000" />
-                  <rect x="9" y="11" width="2" height="1" fill="#000" />
-                  <rect x="13" y="11" width="1" height="1" fill="#000" />
-                  <rect x="16" y="11" width="3" height="1" fill="#000" />
-                  <rect x="11" y="13" width="2" height="1" fill="#000" />
-                  <rect x="14" y="13" width="1" height="1" fill="#000" />
-                  <rect x="16" y="13" width="1" height="1" fill="#000" />
-                  <rect x="19" y="13" width="1" height="1" fill="#000" />
-                  <rect x="11" y="15" width="1" height="1" fill="#000" />
-                  <rect x="13" y="15" width="2" height="2" fill="#000" />
-                  <rect x="17" y="15" width="2" height="1" fill="#000" />
-                  <rect x="11" y="17" width="3" height="1" fill="#000" />
-                  <rect x="16" y="17" width="1" height="1" fill="#000" />
-                  <rect x="19" y="17" width="1" height="1" fill="#000" />
-                  <rect x="12" y="19" width="1" height="1" fill="#000" />
-                  <rect x="15" y="19" width="2" height="1" fill="#000" />
-                  <rect x="19" y="19" width="1" height="1" fill="#000" />
-                </svg>
+                <img
+                  src="https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/6841c3b9-5c51-4fce-b7e2-0c3a6a81f1a1.png"
+                  alt="QR-код"
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                />
               </div>
               <div
                 className="font-roboto text-center"
