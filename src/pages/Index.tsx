@@ -62,10 +62,10 @@ const Index = () => {
               src={LOGO_IMAGE}
               alt="ARMORHEAD"
               style={{
-                width: "92%",
-                height: "85%",
+                width: "100%",
+                height: "100%",
                 objectFit: "contain",
-                filter: "brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.9))",
+                filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))",
               }}
             />
           </div>
