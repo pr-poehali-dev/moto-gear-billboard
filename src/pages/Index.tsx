@@ -78,18 +78,20 @@ const Index = () => {
             {/* Heading */}
             <div>
               <div
-                className="font-oswald font-bold text-white"
+                className="font-oswald font-bold"
                 style={{
-                  fontSize: "clamp(13px, 2.4vw, 31px)",
-                  letterSpacing: "0.04em",
-                  lineHeight: 1,
+                  fontSize: "clamp(18px, 3.4vw, 44px)",
+                  letterSpacing: "0.03em",
+                  lineHeight: 0.95,
                   textTransform: "uppercase",
                 }}
               >
-                Магазин <span style={{ color: "#CC0000" }}>мотоэкипировки</span>
+                <span className="text-white">Магазин</span>
+                <br />
+                <span style={{ color: "#CC0000" }}>мотоэкипировки</span>
               </div>
               <div
-                className="font-roboto uppercase mt-1"
+                className="font-roboto uppercase mt-1.5"
                 style={{
                   fontSize: "clamp(6px, 0.75vw, 9px)",
                   color: "rgba(255,255,255,0.4)",
@@ -195,11 +197,26 @@ const Index = () => {
           >
             {/* Phone */}
             <div className="text-center">
-              <div
-                className="font-roboto uppercase mb-1"
-                style={{ fontSize: "clamp(6px, 0.65vw, 8px)", color: "#CC0000", letterSpacing: "0.25em" }}
-              >
-                Звоните
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <div
+                  className="font-roboto uppercase"
+                  style={{ fontSize: "clamp(6px, 0.65vw, 8px)", color: "#CC0000", letterSpacing: "0.25em" }}
+                >
+                  Звоните
+                </div>
+                <div
+                  className="font-oswald font-bold"
+                  style={{
+                    fontSize: "clamp(6px, 0.65vw, 8px)",
+                    background: "#CC0000",
+                    color: "#fff",
+                    padding: "1px 5px",
+                    letterSpacing: "0.15em",
+                    borderRadius: "2px",
+                  }}
+                >
+                  24/7
+                </div>
               </div>
               <div
                 className="font-oswald font-bold"
