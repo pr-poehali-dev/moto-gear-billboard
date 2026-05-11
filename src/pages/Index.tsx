@@ -10,10 +10,10 @@ const QR_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/6841c3b9-5c51-4fce-b7e2-0c3a6a81f1a1.png";
 
 const PRODUCTS = [
-  { name: "Черепаха", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
-  { name: "Шлем", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
-  { name: "Перчатки", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
-  { name: "Защита", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
+  { name: "Шлемы", sub: "разные цвета и модели", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
+  { name: "Черепахи", sub: null, image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
+  { name: "Перчатки", sub: null, image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
+  { name: "Защита", sub: null, image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
 const Index = () => {
@@ -123,8 +123,8 @@ const Index = () => {
                     src={p.image}
                     alt={p.name}
                     style={{
-                      width: p.name === "Шлем" ? "108%" : "90%",
-                      height: p.name === "Шлем" ? "108%" : "90%",
+                      width: p.name === "Шлемы" ? "108%" : "90%",
+                      height: p.name === "Шлемы" ? "108%" : "90%",
                       objectFit: "contain",
                     }}
                   />
@@ -132,15 +132,22 @@ const Index = () => {
                   <div
                     style={{
                       position: "absolute", bottom: 0, left: 0, right: 0,
-                      background: "rgba(180,0,0,0.85)",
+                      background: "rgba(180,0,0,0.88)",
                       padding: "clamp(2px, 0.4vw, 6px) 4px",
-                      display: "flex", alignItems: "center", justifyContent: "center",
+                      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                      gap: 1,
                     }}
                   >
                     <span className="font-oswald font-bold text-white text-center uppercase"
                       style={{ fontSize: "clamp(9px, 1.3vw, 16px)", letterSpacing: "0.08em", lineHeight: 1 }}>
                       {p.name}
                     </span>
+                    {p.sub && (
+                      <span className="font-roboto text-white text-center"
+                        style={{ fontSize: "clamp(6px, 0.75vw, 9px)", opacity: 0.9, letterSpacing: "0.04em", lineHeight: 1 }}>
+                        {p.sub}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
