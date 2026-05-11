@@ -24,12 +24,19 @@ const RIGHT_PRODUCTS = [
 // Высота нижней подписи фиксирована — все карточки выровнены по нижней границе
 const LABEL_H = "clamp(20px, 3vw, 38px)";
 
-const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: string; image: string } }) => (
+// Угол среза трапеции: правая сторона идёт от (91.6%,0%) до (100%,100%)
+// На карточку переносим тот же угол: срез по верхнему левому или правому углу
+// trim = ширина_среза_в_% от ширины карточки (подбирается визуально ~22%)
+const CLIP_LEFT  = "polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 22%)";
+const CLIP_RIGHT = "polygon(0% 0%, 78% 0%, 100% 22%, 100% 100%, 0% 100%)";
+
+const ProductCard = ({ p, clipVariant }: { p: { name: string; sub: string | null; price: string; image: string }; clipVariant?: "left" | "right" }) => (
   <div
     style={{
       flex: "1 1 0",
       minWidth: 0,
-      borderRadius: 4,
+      clipPath: clipVariant === "left" ? CLIP_LEFT : clipVariant === "right" ? CLIP_RIGHT : undefined,
+      borderRadius: clipVariant ? 0 : 4,
       overflow: "hidden",
       background: "rgba(255,255,255,0.97)",
       border: "1.5px solid rgba(204,0,0,0.45)",
@@ -194,9 +201,10 @@ const Index = () => {
               overflow: "hidden",
             }}
           >
-            {/* Левые карточки — уменьшены */}
+            {/* Левые карточки */}
             <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
-              {LEFT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+              <ProductCard p={LEFT_PRODUCTS[0]} clipVariant="left" />
+              <ProductCard p={LEFT_PRODUCTS[1]} />
             </div>
 
             {/* Центральная колонка: Лого + QR */}
@@ -276,32 +284,33 @@ const Index = () => {
               <div style={{ flex: 1, minHeight: 0 }} />
             </div>
 
-            {/* Правые карточки — уменьшены */}
+            {/* Правые карточки */}
             <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
-              {RIGHT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+              <ProductCard p={RIGHT_PRODUCTS[0]} />
+              <ProductCard p={RIGHT_PRODUCTS[1]} clipVariant="right" />
             </div>
           </div>
 
           {/* ══ АССОРТИМЕНТ ══ */}
           <div
-            className="relative flex items-center justify-center gap-2"
+            className="relative flex items-center justify-center gap-3"
             style={{
               zIndex: 1,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(204,0,0,0.45)",
+              background: "rgba(204,0,0,0.18)",
+              border: "1.5px solid rgba(204,0,0,0.7)",
               borderRadius: 3,
-              padding: "clamp(2px, 0.35vw, 4px) clamp(5px, 0.7vw, 9px)",
-              margin: "clamp(2px, 0.35vw, 5px) clamp(4px, 0.6vw, 8px)",
+              padding: "clamp(4px, 0.7vw, 9px) clamp(8px, 1.2vw, 16px)",
+              margin: "clamp(3px, 0.45vw, 6px) clamp(4px, 0.6vw, 8px)",
               flexShrink: 0,
             }}
           >
-            <Icon name="Users" size={11} style={{ color: "#CC0000", flexShrink: 0 }} />
+            <Icon name="Users" size={16} style={{ color: "#FF4444", flexShrink: 0 }} />
             <span
               className="font-oswald font-bold text-white uppercase text-center"
-              style={{ fontSize: "clamp(7px, 0.95vw, 12px)", letterSpacing: "0.05em", whiteSpace: "nowrap" }}
+              style={{ fontSize: "clamp(11px, 1.6vw, 20px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}
             >
               В наличии большой ассортимент —{" "}
-              <span style={{ color: "#CC0000" }}>для детей, подростков, взрослых</span>
+              <span style={{ color: "#FF5555" }}>для детей, подростков, взрослых</span>
             </span>
           </div>
 
