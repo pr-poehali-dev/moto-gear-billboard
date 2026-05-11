@@ -136,18 +136,17 @@ const Index = () => {
                       padding: "clamp(2px, 0.4vw, 6px) 4px",
                       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
                       gap: 1,
+                      minHeight: "clamp(28px, 4vw, 48px)",
                     }}
                   >
                     <span className="font-oswald font-bold text-white text-center uppercase"
                       style={{ fontSize: "clamp(9px, 1.3vw, 16px)", letterSpacing: "0.08em", lineHeight: 1 }}>
                       {p.name}
                     </span>
-                    {p.sub && (
-                      <span className="font-roboto text-white text-center"
-                        style={{ fontSize: "clamp(6px, 0.75vw, 9px)", opacity: 0.9, letterSpacing: "0.04em", lineHeight: 1 }}>
-                        {p.sub}
-                      </span>
-                    )}
+                    <span className="font-roboto text-white text-center"
+                      style={{ fontSize: "clamp(6px, 0.75vw, 9px)", opacity: p.sub ? 0.9 : 0, letterSpacing: "0.04em", lineHeight: 1 }}>
+                      {p.sub ?? "placeholder"}
+                    </span>
                   </div>
                 </div>
               </div>
