@@ -78,7 +78,7 @@ const Index = () => {
               style={{ width: "clamp(80px, 13vw, 150px)", flexShrink: 0, gap: "clamp(4px, 0.6vw, 8px)" }}
             >
               {/* Лого */}
-              <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-start", justifyContent: "center", overflow: "hidden" }}>
+              <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-start", justifyContent: "center", overflow: "hidden", border: "2px solid rgba(255,255,255,0.75)", borderRadius: 3, padding: 3 }}>
                 <img
                   src={LOGO_IMAGE}
                   alt="ARMORHEAD"
@@ -87,12 +87,28 @@ const Index = () => {
               </div>
 
               {/* Надпись над QR */}
-              <span
-                className="font-oswald font-bold uppercase"
-                style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#FF3333", letterSpacing: "0.1em", flexShrink: 0 }}
-              >
-                Сканируй QR
-              </span>
+              <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: 2 }}>
+                <span
+                  className="font-oswald font-bold uppercase"
+                  style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#FF3333", letterSpacing: "0.1em" }}
+                >
+                  Сканируй QR
+                </span>
+                <div className="flex items-center gap-1">
+                  <svg width="clamp(10px,1.4vw,18px)" height="clamp(10px,1.4vw,18px)" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="5" fill="#00AAFF"/>
+                    <path d="M7 17V10.5C7 8.567 8.567 7 10.5 7C12.433 7 14 8.567 14 10.5C14 12.433 12.433 14 10.5 14H9" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="10.5" cy="10.5" r="1.5" fill="white"/>
+                    <path d="M14 14L17 17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                  <span
+                    className="font-oswald font-bold uppercase"
+                    style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#00AAFF", letterSpacing: "0.1em" }}
+                  >
+                    Авито
+                  </span>
+                </div>
+              </div>
 
               {/* QR */}
               <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-end" }}>
