@@ -12,7 +12,6 @@ const QR_IMAGE =
 const AVITO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/f66e4460-774f-43be-9ed7-3d973c48ce10.png";
 
-// Порядок: Шлемы, Черепахи, [Лого+QR], Перчатки, Защита
 const LEFT_PRODUCTS = [
   { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
   { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
@@ -38,7 +37,7 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
     <div
       style={{
         background: "rgba(0,0,0,0.72)",
-        padding: "clamp(1px, 0.22vw, 3px) 2px",
+        padding: "clamp(1px, 0.2vw, 3px) 2px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -47,18 +46,18 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
     >
       <span
         className="font-oswald font-bold text-center"
-        style={{ fontSize: "clamp(7px, 1.1vw, 14px)", color: "#fff", letterSpacing: "0.03em", lineHeight: 1 }}
+        style={{ fontSize: "clamp(6px, 1vw, 13px)", color: "#fff", letterSpacing: "0.03em", lineHeight: 1 }}
       >
         {p.price}
       </span>
     </div>
-    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0 }}>
-      <img src={p.image} alt={p.name} style={{ width: "90%", height: "90%", objectFit: "contain" }} />
+    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0, padding: "2px" }}>
+      <img src={p.image} alt={p.name} style={{ maxWidth: "85%", maxHeight: "85%", objectFit: "contain" }} />
     </div>
     <div
       style={{
         background: "rgba(180,0,0,0.88)",
-        padding: "clamp(1px, 0.28vw, 4px) 2px",
+        padding: "clamp(1px, 0.25vw, 3px) 2px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -69,13 +68,13 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
     >
       <span
         className="font-oswald font-bold text-white text-center uppercase"
-        style={{ fontSize: "clamp(6px, 0.95vw, 12px)", letterSpacing: "0.07em", lineHeight: 1 }}
+        style={{ fontSize: "clamp(6px, 0.85vw, 11px)", letterSpacing: "0.07em", lineHeight: 1 }}
       >
         {p.name}
       </span>
       <span
         className="font-roboto text-white text-center"
-        style={{ fontSize: "clamp(4px, 0.55vw, 7px)", opacity: p.sub ? 0.9 : 0, letterSpacing: "0.03em", lineHeight: 1 }}
+        style={{ fontSize: "clamp(4px, 0.5vw, 6px)", opacity: p.sub ? 0.9 : 0, letterSpacing: "0.03em", lineHeight: 1 }}
       >
         {p.sub ?? " "}
       </span>
@@ -84,6 +83,9 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
 );
 
 const Index = () => {
+  // Трапеция 113×60 — срез сверху: 8.4% с каждой стороны.
+  // При высоте ~53% (основная зона сверху) срез составляет ~8.4% * (53%/100%) ≈ 4.4% от ширины с каждой стороны.
+  // Верхняя часть основной зоны срезается сильнее — отступ по 7% с каждой стороны гарантирует что карточки целые.
   return (
     <div
       className="min-h-screen flex items-center justify-center"
@@ -119,7 +121,7 @@ const Index = () => {
             <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.82)" }} />
           </div>
 
-          {/* ══ ШАПКА — крупнее ══ */}
+          {/* ══ ШАПКА ══ */}
           <div
             className="relative flex items-center justify-center"
             style={{
@@ -151,7 +153,7 @@ const Index = () => {
               zIndex: 1,
               background: "linear-gradient(90deg, #AA0000, #CC0000, #AA0000)",
               padding: "clamp(2px, 0.38vw, 5px) 0",
-              margin: "clamp(3px, 0.45vw, 6px) 10%",
+              margin: "clamp(3px, 0.45vw, 6px) 12%",
               borderRadius: 2,
             }}
           >
@@ -166,27 +168,32 @@ const Index = () => {
             <Icon name="Tag" size={10} className="text-yellow-300 flex-shrink-0" />
           </div>
 
-          {/* ══ ОСНОВНАЯ ЗОНА: [Шлемы][Черепахи][Лого+QR][Перчатки][Защита] ══ */}
+          {/* ══ ОСНОВНАЯ ЗОНА ══
+               Отступы по бокам — 6.5% чтобы крайние карточки не попадали под срез трапеции сверху.
+               Карточки уменьшены: flex 0.8 вместо 1, чтобы оставалось больше воздуха.
+          */}
           <div
-            className="relative flex"
+            className="relative flex items-stretch"
             style={{
               zIndex: 1,
-              gap: "clamp(3px, 0.5vw, 7px)",
-              padding: "0 clamp(4px, 0.6vw, 8px)",
+              gap: "clamp(3px, 0.45vw, 6px)",
+              padding: "clamp(2px, 0.3vw, 4px) 6.5%",
               minHeight: 0,
               overflow: "hidden",
             }}
           >
-            {/* Левые карточки */}
-            {LEFT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+            {/* Левые карточки — уменьшены */}
+            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
+              {LEFT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+            </div>
 
-            {/* Центральная колонка: Лого + QR */}
+            {/* Центральная колонка: Лого + QR — крупнее */}
             <div
               className="flex flex-col items-center justify-between"
               style={{
-                width: "clamp(55px, 8vw, 95px)",
+                width: "clamp(70px, 10.5vw, 120px)",
                 flexShrink: 0,
-                gap: "clamp(2px, 0.3vw, 4px)",
+                gap: "clamp(2px, 0.4vw, 6px)",
               }}
             >
               {/* Лого */}
@@ -194,8 +201,8 @@ const Index = () => {
                 style={{
                   width: "100%",
                   flex: "1 1 0",
-                  border: "2px solid rgba(255,255,255,0.75)",
-                  borderRadius: 3,
+                  border: "2.5px solid rgba(255,255,255,0.85)",
+                  borderRadius: 4,
                   overflow: "hidden",
                   minHeight: 0,
                 }}
@@ -211,27 +218,36 @@ const Index = () => {
               <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: "1px" }}>
                 <span
                   className="font-oswald font-bold uppercase"
-                  style={{ fontSize: "clamp(5px, 0.75vw, 9px)", color: "#fff", letterSpacing: "0.08em", lineHeight: 1 }}
+                  style={{ fontSize: "clamp(5px, 0.8vw, 10px)", color: "#fff", letterSpacing: "0.08em", lineHeight: 1 }}
                 >
                   Сканируй QR
                 </span>
-                <div style={{ background: "white", borderRadius: 2, padding: "1px 3px", display: "flex", alignItems: "center" }}>
+                <div style={{ background: "white", borderRadius: 2, padding: "1px 4px", display: "flex", alignItems: "center" }}>
                   <img
                     src={AVITO_IMAGE}
                     alt="Авито"
-                    style={{ height: "clamp(6px, 0.9vw, 11px)", width: "auto", objectFit: "contain", display: "block" }}
+                    style={{ height: "clamp(7px, 1vw, 13px)", width: "auto", objectFit: "contain", display: "block" }}
                   />
                 </div>
               </div>
 
-              {/* QR */}
-              <div style={{ flex: "1 1 0", width: "100%", minHeight: 0, display: "flex", alignItems: "center" }}>
+              {/* QR — того же размера что лого */}
+              <div
+                style={{
+                  flex: "1 1 0",
+                  width: "100%",
+                  minHeight: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <div
                   style={{
                     background: "white",
-                    padding: "2px",
-                    border: "2px solid #CC0000",
-                    borderRadius: 3,
+                    padding: "3px",
+                    border: "2.5px solid #CC0000",
+                    borderRadius: 4,
                     width: "100%",
                     aspectRatio: "1/1",
                   }}
@@ -241,8 +257,10 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Правые карточки */}
-            {RIGHT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+            {/* Правые карточки — уменьшены */}
+            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
+              {RIGHT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+            </div>
           </div>
 
           {/* ══ АССОРТИМЕНТ ══ */}
@@ -268,7 +286,7 @@ const Index = () => {
             </span>
           </div>
 
-          {/* ══ НИЖНЯЯ ПОЛОСА — телефон по центру, крупнее ══ */}
+          {/* ══ НИЖНЯЯ ПОЛОСА ══ */}
           <div
             className="relative flex items-center justify-center gap-6"
             style={{
