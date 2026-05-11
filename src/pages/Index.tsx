@@ -6,6 +6,9 @@ const MOTO_IMAGE =
 const LOGO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/02ccc225-3a2f-4cbe-b806-29801425921f.png";
 
+const QR_IMAGE =
+  "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/6841c3b9-5c51-4fce-b7e2-0c3a6a81f1a1.png";
+
 const PRODUCTS = [
   { name: "Черепаха", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
   { name: "Шлем", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
@@ -35,28 +38,29 @@ const Index = () => {
           <div className="absolute inset-0" style={{ background: "rgba(13,13,13,0.78)" }} />
         </div>
 
-        {/* ─── ШАПКА: МАГАЗИН МОТОЭКИПИРОВКИ ─── */}
+        {/* ─── ШАПКА ─── */}
         <div
-          className="relative z-10 flex items-center justify-center"
+          className="relative z-10"
           style={{
-            background: "linear-gradient(90deg, #880000 0%, #CC0000 30%, #FF1111 50%, #CC0000 70%, #880000 100%)",
-            padding: "clamp(6px, 1.4vw, 18px) 16px",
-            borderBottom: "3px solid #FF4444",
+            background: "#CC0000",
             flexShrink: 0,
+            borderBottom: "2px solid #FF4444",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "clamp(34px, 6.5vw, 56px)",
           }}
         >
           <span
-            className="font-oswald font-bold text-white text-center uppercase"
+            className="font-oswald font-bold text-white uppercase"
             style={{
-              fontSize: "clamp(22px, 4.6vw, 58px)",
-              letterSpacing: "0.25em",
-              textShadow: "0 0 20px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9)",
+              fontSize: "clamp(14px, 3.2vw, 40px)",
+              letterSpacing: "0.22em",
+              lineHeight: 1,
               display: "block",
-              width: "100%",
-              textAlign: "center",
             }}
           >
-            ★ &nbsp;Магазин мотоэкипировки&nbsp; ★
+            Магазин мотоэкипировки
           </span>
         </div>
 
@@ -67,7 +71,7 @@ const Index = () => {
           <div
             className="flex flex-col justify-center items-center"
             style={{
-              width: "25%",
+              width: "22%",
               borderRight: "1px solid rgba(204,0,0,0.35)",
               padding: "clamp(4px, 0.7vw, 10px)",
             }}
@@ -89,8 +93,8 @@ const Index = () => {
             className="flex flex-col flex-1"
             style={{ padding: "clamp(4px, 0.7vw, 10px) clamp(5px, 0.9vw, 14px)" }}
           >
-            {/* Фото товаров — фиксированная высота, квадратные ячейки */}
-            <div style={{ display: "flex", gap: "clamp(4px, 0.7vw, 10px)", height: "55%" }}>
+            {/* Фото товаров */}
+            <div style={{ display: "flex", gap: "clamp(4px, 0.7vw, 10px)", height: "58%" }}>
               {PRODUCTS.map((p) => (
                 <div
                   key={p.name}
@@ -175,62 +179,52 @@ const Index = () => {
             </div>
           </div>
 
-          {/* RIGHT — Телефон + QR + Адрес */}
+          {/* RIGHT — QR + Телефон + Адрес */}
           <div
             className="flex flex-col justify-between items-center"
             style={{
-              width: "27%",
+              width: "24%",
               borderLeft: "1px solid rgba(204,0,0,0.35)",
               background: "rgba(0,0,0,0.35)",
               padding: "clamp(6px, 1vw, 14px) clamp(5px, 0.8vw, 12px)",
             }}
           >
-            {/* Телефон */}
-            <div className="text-center w-full" style={{ overflow: "hidden" }}>
-              <div
-                className="font-roboto uppercase text-center"
-                style={{ fontSize: "clamp(6px, 0.7vw, 9px)", color: "#CC0000", letterSpacing: "0.25em", marginBottom: 2 }}
-              >
-                Звоните
-              </div>
-              <div
-                className="font-oswald font-bold text-center"
-                style={{
-                  fontSize: "clamp(14px, 2.6vw, 32px)",
-                  letterSpacing: "0em",
-                  lineHeight: 1.1,
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                }}
-              >
-                <span className="text-white">+7 (985) </span>
-                <span style={{ color: "#CC0000" }}>361-55-17</span>
-              </div>
-            </div>
-
-            {/* QR */}
+            {/* QR — сверху, крупный */}
             <div className="flex flex-col items-center gap-1" style={{ flex: 1, justifyContent: "center" }}>
               <div
                 style={{
-                  width: "clamp(85px, 13vw, 158px)",
-                  height: "clamp(85px, 13vw, 158px)",
+                  width: "clamp(90px, 13.5vw, 155px)",
+                  height: "clamp(90px, 13.5vw, 155px)",
                   background: "white",
                   padding: "5px",
                   borderRadius: "3px",
                   border: "3px solid #CC0000",
                 }}
               >
-                <img
-                  src="https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/6841c3b9-5c51-4fce-b7e2-0c3a6a81f1a1.png"
-                  alt="QR-код"
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                />
+                <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              </div>
+              <div style={{ fontSize: "clamp(5px, 0.6vw, 8px)", color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                Сканируй QR
+              </div>
+            </div>
+
+            {/* Телефон — снизу */}
+            <div className="text-center w-full" style={{ flexShrink: 0 }}>
+              <div
+                style={{ fontSize: "clamp(5px, 0.65vw, 8px)", color: "#CC0000", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 2 }}
+              >
+                Звоните
               </div>
               <div
-                className="font-roboto text-center uppercase"
-                style={{ fontSize: "clamp(5px, 0.6vw, 8px)", color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em" }}
+                className="font-oswald font-bold text-center"
+                style={{
+                  fontSize: "clamp(13px, 2.2vw, 27px)",
+                  lineHeight: 1.1,
+                  whiteSpace: "nowrap",
+                }}
               >
-                Сканируй QR
+                <span className="text-white">+7 (985) </span>
+                <span style={{ color: "#FF3333" }}>361-55-17</span>
               </div>
             </div>
 
