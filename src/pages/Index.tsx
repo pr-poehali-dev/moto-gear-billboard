@@ -1,4 +1,3 @@
-import React from "react";
 import Icon from "@/components/ui/icon";
 
 const MOTO_IMAGE =
@@ -25,7 +24,7 @@ const RIGHT_PRODUCTS = [
 // Высота нижней подписи фиксирована — все карточки выровнены по нижней границе
 const LABEL_H = "clamp(20px, 3vw, 38px)";
 
-const ProductCard = ({ p, outerStyle }: { p: { name: string; sub: string | null; price: string; image: string }; outerStyle?: React.CSSProperties }) => (
+const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: string; image: string } }) => (
   <div
     style={{
       flex: "1 1 0",
@@ -37,7 +36,6 @@ const ProductCard = ({ p, outerStyle }: { p: { name: string; sub: string | null;
       display: "flex",
       flexDirection: "column",
       position: "relative",
-      ...outerStyle,
     }}
   >
     {/* Цена сверху */}
@@ -187,20 +185,18 @@ const Index = () => {
                Карточки уменьшены: flex 0.8 вместо 1, чтобы оставалось больше воздуха.
           */}
           <div
-            className="relative flex items-stretch justify-center"
+            className="relative flex items-stretch"
             style={{
               zIndex: 1,
               gap: "clamp(3px, 0.45vw, 6px)",
-              padding: "clamp(6px, 1.2vw, 14px) 0 clamp(2px, 0.3vw, 4px)",
+              padding: "clamp(6px, 1.2vw, 14px) 6.5% clamp(2px, 0.3vw, 4px)",
               minHeight: 0,
               overflow: "hidden",
             }}
           >
-            {/* Левые карточки */}
-            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
-              {/* Перчатки: левая грань наклонена как боковая линия трапеции — от (3.2vw,0%) до (0%,100%) */}
-              <ProductCard p={LEFT_PRODUCTS[0]} outerStyle={{ clipPath: "polygon(3.2vw 0%, 100% 0%, 100% 100%, 0% 100%)", borderRadius: 0 }} />
-              <ProductCard p={LEFT_PRODUCTS[1]} />
+            {/* Левые карточки — уменьшены */}
+            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
+              {LEFT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
             </div>
 
             {/* Центральная колонка: Лого + QR */}
@@ -280,34 +276,32 @@ const Index = () => {
               <div style={{ flex: 1, minHeight: 0 }} />
             </div>
 
-            {/* Правые карточки */}
-            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
-              <ProductCard p={RIGHT_PRODUCTS[0]} />
-              {/* Защита: правая грань наклонена как боковая линия трапеции — от (calc(100%-3.2vw),0%) до (100%,100%) */}
-              <ProductCard p={RIGHT_PRODUCTS[1]} outerStyle={{ clipPath: "polygon(0% 0%, calc(100% - 3.2vw) 0%, 100% 100%, 0% 100%)", borderRadius: 0 }} />
+            {/* Правые карточки — уменьшены */}
+            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
+              {RIGHT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
             </div>
           </div>
 
           {/* ══ АССОРТИМЕНТ ══ */}
           <div
-            className="relative flex items-center justify-center gap-3"
+            className="relative flex items-center justify-center gap-2"
             style={{
               zIndex: 1,
-              background: "rgba(204,0,0,0.18)",
-              border: "1.5px solid rgba(204,0,0,0.7)",
+              background: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(204,0,0,0.45)",
               borderRadius: 3,
-              padding: "clamp(4px, 0.7vw, 9px) clamp(8px, 1.2vw, 16px)",
-              margin: "clamp(3px, 0.45vw, 6px) clamp(4px, 0.6vw, 8px)",
+              padding: "clamp(2px, 0.35vw, 4px) clamp(5px, 0.7vw, 9px)",
+              margin: "clamp(2px, 0.35vw, 5px) clamp(4px, 0.6vw, 8px)",
               flexShrink: 0,
             }}
           >
-            <Icon name="Users" size={16} style={{ color: "#FF4444", flexShrink: 0 }} />
+            <Icon name="Users" size={11} style={{ color: "#CC0000", flexShrink: 0 }} />
             <span
               className="font-oswald font-bold text-white uppercase text-center"
-              style={{ fontSize: "clamp(11px, 1.6vw, 20px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}
+              style={{ fontSize: "clamp(7px, 0.95vw, 12px)", letterSpacing: "0.05em", whiteSpace: "nowrap" }}
             >
               В наличии большой ассортимент —{" "}
-              <span style={{ color: "#FF5555" }}>для детей, подростков, взрослых</span>
+              <span style={{ color: "#CC0000" }}>для детей, подростков, взрослых</span>
             </span>
           </div>
 
