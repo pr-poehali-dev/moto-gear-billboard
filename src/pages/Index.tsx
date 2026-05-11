@@ -139,7 +139,7 @@ const Index = () => {
                     }}
                   >
                     <span className="font-oswald font-bold text-center"
-                      style={{ fontSize: "clamp(8px, 1.2vw, 15px)", color: "#FFE066", letterSpacing: "0.04em", lineHeight: 1 }}>
+                      style={{ fontSize: "clamp(11px, 1.7vw, 21px)", color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}>
                       {p.price}
                     </span>
                   </div>
