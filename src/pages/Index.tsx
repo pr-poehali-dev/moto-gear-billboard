@@ -95,15 +95,14 @@ const Index = () => {
                   Сканируй QR
                 </span>
                 <div className="flex items-center gap-1">
-                  <svg width="clamp(10px,1.4vw,18px)" height="clamp(10px,1.4vw,18px)" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="5" fill="#00AAFF"/>
-                    <path d="M7 17V10.5C7 8.567 8.567 7 10.5 7C12.433 7 14 8.567 14 10.5C14 12.433 12.433 14 10.5 14H9" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="10.5" cy="10.5" r="1.5" fill="white"/>
-                    <path d="M14 14L17 17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
+                  <img
+                    src="https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/3d87f3d8-4b0c-4da0-a589-145d827517c2.png"
+                    alt="Авито"
+                    style={{ width: "clamp(10px, 1.4vw, 16px)", height: "clamp(10px, 1.4vw, 16px)", objectFit: "contain", borderRadius: 3 }}
+                  />
                   <span
                     className="font-oswald font-bold uppercase"
-                    style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#00AAFF", letterSpacing: "0.1em" }}
+                    style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#fff", letterSpacing: "0.1em" }}
                   >
                     Авито
                   </span>
