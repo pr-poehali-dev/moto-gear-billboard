@@ -209,19 +209,19 @@ const Index = () => {
                 justifyContent: "flex-start",
               }}
             >
-              {/* Лого — квадрат, равная рамка со всех сторон */}
+              {/* Лого — квадрат, тонкая рамка */}
               <div
                 style={{
                   width: "100%",
                   aspectRatio: "1 / 1",
                   flexShrink: 0,
-                  border: "2.5px solid rgba(255,255,255,0.85)",
+                  border: "1px solid rgba(255,255,255,0.6)",
                   borderRadius: 4,
                   background: "#fff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: "4px",
+                  padding: "2px",
                   boxSizing: "border-box",
                 }}
               >
@@ -232,10 +232,10 @@ const Index = () => {
                 />
               </div>
 
-              {/* Распорка — толкает QR-блок вниз */}
+              {/* Распорка сверху — половина оставшегося места */}
               <div style={{ flex: 1, minHeight: 0 }} />
 
-              {/* Сканируй QR + Авито — прямо над QR */}
+              {/* Сканируй QR + Авито + QR — в центре */}
               <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: "2px" }}>
                 <span
                   className="font-oswald font-bold uppercase"
@@ -250,26 +250,29 @@ const Index = () => {
                     style={{ height: "clamp(7px, 1vw, 13px)", width: "auto", objectFit: "contain", display: "block" }}
                   />
                 </div>
+
+                {/* QR прямо под надписью */}
+                <div
+                  style={{
+                    width: "100%",
+                    aspectRatio: "1/1",
+                    background: "white",
+                    padding: "3px",
+                    border: "1px solid #CC0000",
+                    borderRadius: 4,
+                    boxSizing: "border-box",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: "1px",
+                  }}
+                >
+                  <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+                </div>
               </div>
 
-              {/* QR — квадрат того же размера что лого */}
-              <div
-                style={{
-                  width: "100%",
-                  aspectRatio: "1/1",
-                  flexShrink: 0,
-                  background: "white",
-                  padding: "3px",
-                  border: "2.5px solid #CC0000",
-                  borderRadius: 4,
-                  boxSizing: "border-box",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
-              </div>
+              {/* Распорка снизу */}
+              <div style={{ flex: 1, minHeight: 0 }} />
             </div>
 
             {/* Правые карточки — уменьшены */}
