@@ -12,7 +12,7 @@ const QR_IMAGE =
 const PRODUCTS = [
   { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
   { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
-  { name: "Перчатки", sub: null, price: "От 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
+  { name: "Перчатки", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
   { name: "Защита", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
@@ -78,11 +78,11 @@ const Index = () => {
               style={{ width: "clamp(80px, 13vw, 150px)", flexShrink: 0, gap: "clamp(4px, 0.6vw, 8px)" }}
             >
               {/* Лого */}
-              <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-start", justifyContent: "center", overflow: "hidden", border: "2px solid rgba(255,255,255,0.75)", borderRadius: 3, padding: 3 }}>
+              <div style={{ flex: 1, width: "100%", border: "2px solid rgba(255,255,255,0.75)", borderRadius: 3, overflow: "hidden" }}>
                 <img
                   src={LOGO_IMAGE}
                   alt="ARMORHEAD"
-                  style={{ width: "100%", objectFit: "contain", filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))" }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))" }}
                 />
               </div>
 
@@ -90,7 +90,7 @@ const Index = () => {
               <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: 2 }}>
                 <span
                   className="font-oswald font-bold uppercase"
-                  style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#FF3333", letterSpacing: "0.1em" }}
+                  style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#ffffff", letterSpacing: "0.1em" }}
                 >
                   Сканируй QR
                 </span>
