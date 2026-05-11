@@ -94,18 +94,12 @@ const Index = () => {
                 >
                   Сканируй QR
                 </span>
-                <div className="flex items-center gap-1">
+                <div style={{ background: "white", borderRadius: 3, padding: "1px 4px", display: "flex", alignItems: "center" }}>
                   <img
-                    src="https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/3d87f3d8-4b0c-4da0-a589-145d827517c2.png"
+                    src="https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/f66e4460-774f-43be-9ed7-3d973c48ce10.png"
                     alt="Авито"
-                    style={{ width: "clamp(10px, 1.4vw, 16px)", height: "clamp(10px, 1.4vw, 16px)", objectFit: "contain", borderRadius: 3 }}
+                    style={{ height: "clamp(10px, 1.4vw, 16px)", width: "auto", objectFit: "contain" }}
                   />
-                  <span
-                    className="font-oswald font-bold uppercase"
-                    style={{ fontSize: "clamp(8px, 1.1vw, 14px)", color: "#fff", letterSpacing: "0.1em" }}
-                  >
-                    Авито
-                  </span>
                 </div>
               </div>
 
