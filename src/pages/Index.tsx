@@ -21,6 +21,9 @@ const RIGHT_PRODUCTS = [
   { name: "Защита", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
+// Высота нижней подписи фиксирована — все карточки выровнены по нижней границе
+const LABEL_H = "clamp(20px, 3vw, 38px)";
+
 const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: string; image: string } }) => (
   <div
     style={{
@@ -32,8 +35,10 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
       border: "1.5px solid rgba(204,0,0,0.45)",
       display: "flex",
       flexDirection: "column",
+      position: "relative",
     }}
   >
+    {/* Цена сверху */}
     <div
       style={{
         background: "rgba(0,0,0,0.72)",
@@ -51,19 +56,26 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
         {p.price}
       </span>
     </div>
-    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0, padding: "1px" }}>
+
+    {/* Картинка — оставляем место под подпись снизу */}
+    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0, padding: "1px", paddingBottom: LABEL_H }}>
       <img src={p.image} alt={p.name} style={{ maxWidth: "99%", maxHeight: "99%", objectFit: "contain" }} />
     </div>
+
+    {/* Подпись — абсолютно внизу, фиксированная высота → верхняя граница всегда на одном уровне */}
     <div
       style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: LABEL_H,
         background: "rgba(180,0,0,0.88)",
-        padding: "clamp(2px, 0.4vw, 5px) 4px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         gap: 2,
-        flexShrink: 0,
       }}
     >
       <span
@@ -187,16 +199,17 @@ const Index = () => {
               {LEFT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
             </div>
 
-            {/* Центральная колонка: Лого + QR — крупнее */}
+            {/* Центральная колонка: Лого + QR */}
             <div
-              className="flex flex-col items-center justify-between"
+              className="flex flex-col items-center"
               style={{
                 width: "clamp(70px, 10.5vw, 120px)",
                 flexShrink: 0,
-                gap: "clamp(2px, 0.4vw, 6px)",
+                gap: "clamp(3px, 0.5vw, 7px)",
+                justifyContent: "flex-start",
               }}
             >
-              {/* Лого — квадрат, не обрезается */}
+              {/* Лого — квадрат, равная рамка со всех сторон */}
               <div
                 style={{
                   width: "100%",
@@ -204,11 +217,12 @@ const Index = () => {
                   flexShrink: 0,
                   border: "2.5px solid rgba(255,255,255,0.85)",
                   borderRadius: 4,
-                  overflow: "hidden",
                   background: "#fff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  padding: "4px",
+                  boxSizing: "border-box",
                 }}
               >
                 <img
@@ -218,8 +232,11 @@ const Index = () => {
                 />
               </div>
 
-              {/* Сканируй QR + Авито */}
-              <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: "1px" }}>
+              {/* Распорка — толкает QR-блок вниз */}
+              <div style={{ flex: 1, minHeight: 0 }} />
+
+              {/* Сканируй QR + Авито — прямо над QR */}
+              <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: "2px" }}>
                 <span
                   className="font-oswald font-bold uppercase"
                   style={{ fontSize: "clamp(5px, 0.8vw, 10px)", color: "#fff", letterSpacing: "0.08em", lineHeight: 1 }}
@@ -235,29 +252,23 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* QR — того же размера что лого */}
+              {/* QR — квадрат того же размера что лого */}
               <div
                 style={{
-                  flex: "1 1 0",
                   width: "100%",
-                  minHeight: 0,
+                  aspectRatio: "1/1",
+                  flexShrink: 0,
+                  background: "white",
+                  padding: "3px",
+                  border: "2.5px solid #CC0000",
+                  borderRadius: 4,
+                  boxSizing: "border-box",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <div
-                  style={{
-                    background: "white",
-                    padding: "3px",
-                    border: "2.5px solid #CC0000",
-                    borderRadius: 4,
-                    width: "100%",
-                    aspectRatio: "1/1",
-                  }}
-                >
-                  <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
-                </div>
+                <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
               </div>
             </div>
 
