@@ -13,11 +13,11 @@ const AVITO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/f66e4460-774f-43be-9ed7-3d973c48ce10.png";
 
 const LEFT_PRODUCTS = [
-  { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
+  { name: "Перчатки", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
   { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
 ];
 const RIGHT_PRODUCTS = [
-  { name: "Перчатки", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
+  { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
   { name: "Защита", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
@@ -52,7 +52,7 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
       </span>
     </div>
     <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0, padding: "2px" }}>
-      <img src={p.image} alt={p.name} style={{ maxWidth: "85%", maxHeight: "85%", objectFit: "contain" }} />
+      <img src={p.image} alt={p.name} style={{ maxWidth: "96%", maxHeight: "96%", objectFit: "contain" }} />
     </div>
     <div
       style={{
@@ -196,21 +196,25 @@ const Index = () => {
                 gap: "clamp(2px, 0.4vw, 6px)",
               }}
             >
-              {/* Лого */}
+              {/* Лого — квадрат, не обрезается */}
               <div
                 style={{
                   width: "100%",
-                  flex: "1 1 0",
+                  aspectRatio: "1 / 1",
+                  flexShrink: 0,
                   border: "2.5px solid rgba(255,255,255,0.85)",
                   borderRadius: 4,
                   overflow: "hidden",
-                  minHeight: 0,
+                  background: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <img
                   src={LOGO_IMAGE}
                   alt="ARMORHEAD"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
                 />
               </div>
 
