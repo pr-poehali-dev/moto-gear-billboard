@@ -198,8 +198,8 @@ const Index = () => {
           >
             {/* Левые карточки */}
             <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
-              {/* Крайняя левая — выдвинута в сторону трапеции, трапеция сама срезает угол */}
-              <ProductCard p={LEFT_PRODUCTS[0]} outerStyle={{ marginLeft: "calc(-3.2vw)", paddingLeft: "3.2vw", boxSizing: "border-box" }} />
+              {/* Перчатки: левая грань наклонена как боковая линия трапеции — от (3.2vw,0%) до (0%,100%) */}
+              <ProductCard p={LEFT_PRODUCTS[0]} outerStyle={{ clipPath: "polygon(3.2vw 0%, 100% 0%, 100% 100%, 0% 100%)", borderRadius: 0 }} />
               <ProductCard p={LEFT_PRODUCTS[1]} />
             </div>
 
@@ -283,8 +283,8 @@ const Index = () => {
             {/* Правые карточки */}
             <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
               <ProductCard p={RIGHT_PRODUCTS[0]} />
-              {/* Крайняя правая — выдвинута в сторону трапеции, трапеция сама срезает угол */}
-              <ProductCard p={RIGHT_PRODUCTS[1]} outerStyle={{ marginRight: "calc(-3.2vw)", paddingRight: "3.2vw", boxSizing: "border-box" }} />
+              {/* Защита: правая грань наклонена как боковая линия трапеции — от (calc(100%-3.2vw),0%) до (100%,100%) */}
+              <ProductCard p={RIGHT_PRODUCTS[1]} outerStyle={{ clipPath: "polygon(0% 0%, calc(100% - 3.2vw) 0%, 100% 100%, 0% 100%)", borderRadius: 0 }} />
             </div>
           </div>
 
