@@ -12,12 +12,76 @@ const QR_IMAGE =
 const AVITO_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/f66e4460-774f-43be-9ed7-3d973c48ce10.png";
 
-const PRODUCTS = [
+// Порядок: Шлемы, Черепахи, [Лого+QR], Перчатки, Защита
+const LEFT_PRODUCTS = [
   { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
   { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
+];
+const RIGHT_PRODUCTS = [
   { name: "Перчатки", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
   { name: "Защита", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
+
+const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: string; image: string } }) => (
+  <div
+    style={{
+      flex: "1 1 0",
+      minWidth: 0,
+      borderRadius: 4,
+      overflow: "hidden",
+      background: "rgba(255,255,255,0.97)",
+      border: "1.5px solid rgba(204,0,0,0.45)",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <div
+      style={{
+        background: "rgba(0,0,0,0.72)",
+        padding: "clamp(1px, 0.22vw, 3px) 2px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+      }}
+    >
+      <span
+        className="font-oswald font-bold text-center"
+        style={{ fontSize: "clamp(7px, 1.1vw, 14px)", color: "#fff", letterSpacing: "0.03em", lineHeight: 1 }}
+      >
+        {p.price}
+      </span>
+    </div>
+    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0 }}>
+      <img src={p.image} alt={p.name} style={{ width: "90%", height: "90%", objectFit: "contain" }} />
+    </div>
+    <div
+      style={{
+        background: "rgba(180,0,0,0.88)",
+        padding: "clamp(1px, 0.28vw, 4px) 2px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 1,
+        flexShrink: 0,
+      }}
+    >
+      <span
+        className="font-oswald font-bold text-white text-center uppercase"
+        style={{ fontSize: "clamp(6px, 0.95vw, 12px)", letterSpacing: "0.07em", lineHeight: 1 }}
+      >
+        {p.name}
+      </span>
+      <span
+        className="font-roboto text-white text-center"
+        style={{ fontSize: "clamp(4px, 0.55vw, 7px)", opacity: p.sub ? 0.9 : 0, letterSpacing: "0.03em", lineHeight: 1 }}
+      >
+        {p.sub ?? " "}
+      </span>
+    </div>
+  </div>
+);
 
 const Index = () => {
   return (
@@ -51,31 +115,26 @@ const Index = () => {
         >
           {/* Фон */}
           <div className="absolute inset-0" style={{ zIndex: 0 }}>
-            <img
-              src={MOTO_IMAGE}
-              alt=""
-              className="w-full h-full object-cover"
-              style={{ opacity: 0.12 }}
-            />
+            <img src={MOTO_IMAGE} alt="" className="w-full h-full object-cover" style={{ opacity: 0.12 }} />
             <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.82)" }} />
           </div>
 
-          {/* ══ ШАПКА ══ */}
+          {/* ══ ШАПКА — крупнее ══ */}
           <div
             className="relative flex items-center justify-center"
             style={{
               zIndex: 1,
               background: "#0D0D0D",
               borderBottom: "2px solid #CC0000",
-              height: "clamp(26px, 4.8vw, 48px)",
+              height: "clamp(34px, 6.5vw, 64px)",
               padding: "0 14%",
             }}
           >
             <span
               className="font-oswald font-bold uppercase w-full text-center"
               style={{
-                fontSize: "clamp(11px, 2.6vw, 34px)",
-                letterSpacing: "0.14em",
+                fontSize: "clamp(16px, 4vw, 52px)",
+                letterSpacing: "0.12em",
                 lineHeight: 1,
                 whiteSpace: "nowrap",
               }}
@@ -107,7 +166,7 @@ const Index = () => {
             <Icon name="Tag" size={10} className="text-yellow-300 flex-shrink-0" />
           </div>
 
-          {/* ══ ОСНОВНАЯ ЗОНА ══ */}
+          {/* ══ ОСНОВНАЯ ЗОНА: [Шлемы][Черепахи][Лого+QR][Перчатки][Защита] ══ */}
           <div
             className="relative flex"
             style={{
@@ -118,11 +177,14 @@ const Index = () => {
               overflow: "hidden",
             }}
           >
-            {/* Левая колонка: лого + QR */}
+            {/* Левые карточки */}
+            {LEFT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
+
+            {/* Центральная колонка: Лого + QR */}
             <div
-              className="flex flex-col items-center"
+              className="flex flex-col items-center justify-between"
               style={{
-                width: "clamp(50px, 7.5vw, 88px)",
+                width: "clamp(55px, 8vw, 95px)",
                 flexShrink: 0,
                 gap: "clamp(2px, 0.3vw, 4px)",
               }}
@@ -153,15 +215,7 @@ const Index = () => {
                 >
                   Сканируй QR
                 </span>
-                <div
-                  style={{
-                    background: "white",
-                    borderRadius: 2,
-                    padding: "1px 3px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
+                <div style={{ background: "white", borderRadius: 2, padding: "1px 3px", display: "flex", alignItems: "center" }}>
                   <img
                     src={AVITO_IMAGE}
                     alt="Авито"
@@ -171,15 +225,7 @@ const Index = () => {
               </div>
 
               {/* QR */}
-              <div
-                style={{
-                  flex: "1 1 0",
-                  width: "100%",
-                  minHeight: 0,
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
+              <div style={{ flex: "1 1 0", width: "100%", minHeight: 0, display: "flex", alignItems: "center" }}>
                 <div
                   style={{
                     background: "white",
@@ -190,106 +236,13 @@ const Index = () => {
                     aspectRatio: "1/1",
                   }}
                 >
-                  <img
-                    src={QR_IMAGE}
-                    alt="QR"
-                    style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
-                  />
+                  <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
                 </div>
               </div>
             </div>
 
-            {/* Карточки товаров */}
-            {PRODUCTS.map((p) => (
-              <div
-                key={p.name}
-                style={{
-                  flex: "1 1 0",
-                  minWidth: 0,
-                  position: "relative",
-                  borderRadius: 4,
-                  overflow: "hidden",
-                  background: "rgba(255,255,255,0.97)",
-                  border: "1.5px solid rgba(204,0,0,0.45)",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {/* Цена */}
-                <div
-                  style={{
-                    background: "rgba(0,0,0,0.72)",
-                    padding: "clamp(1px, 0.22vw, 3px) 2px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <span
-                    className="font-oswald font-bold text-center"
-                    style={{
-                      fontSize: "clamp(7px, 1.1vw, 14px)",
-                      color: "#fff",
-                      letterSpacing: "0.03em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {p.price}
-                  </span>
-                </div>
-
-                {/* Картинка */}
-                <div
-                  style={{
-                    flex: 1,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    overflow: "hidden",
-                    minHeight: 0,
-                  }}
-                >
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    style={{ width: "90%", height: "90%", objectFit: "contain" }}
-                  />
-                </div>
-
-                {/* Подпись */}
-                <div
-                  style={{
-                    background: "rgba(180,0,0,0.88)",
-                    padding: "clamp(1px, 0.28vw, 4px) 2px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 1,
-                    flexShrink: 0,
-                  }}
-                >
-                  <span
-                    className="font-oswald font-bold text-white text-center uppercase"
-                    style={{ fontSize: "clamp(6px, 0.95vw, 12px)", letterSpacing: "0.07em", lineHeight: 1 }}
-                  >
-                    {p.name}
-                  </span>
-                  <span
-                    className="font-roboto text-white text-center"
-                    style={{
-                      fontSize: "clamp(4px, 0.55vw, 7px)",
-                      opacity: p.sub ? 0.9 : 0,
-                      letterSpacing: "0.03em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {p.sub ?? " "}
-                  </span>
-                </div>
-              </div>
-            ))}
+            {/* Правые карточки */}
+            {RIGHT_PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}
           </div>
 
           {/* ══ АССОРТИМЕНТ ══ */}
@@ -315,23 +268,23 @@ const Index = () => {
             </span>
           </div>
 
-          {/* ══ НИЖНЯЯ ПОЛОСА ══ */}
+          {/* ══ НИЖНЯЯ ПОЛОСА — телефон по центру, крупнее ══ */}
           <div
-            className="relative flex items-center justify-between"
+            className="relative flex items-center justify-center gap-6"
             style={{
               zIndex: 1,
               background: "rgba(0,0,0,0.6)",
               borderTop: "2px solid #CC0000",
-              height: "clamp(26px, 4.8vw, 48px)",
+              height: "clamp(30px, 5.8vw, 58px)",
               padding: "0 3%",
               flexShrink: 0,
             }}
           >
             <div className="flex items-center gap-2">
-              <Icon name="Phone" size={12} style={{ color: "#CC0000", flexShrink: 0 }} />
+              <Icon name="Phone" size={14} style={{ color: "#CC0000", flexShrink: 0 }} />
               <span
                 className="font-oswald font-bold"
-                style={{ fontSize: "clamp(12px, 2.3vw, 29px)", letterSpacing: "0.04em", lineHeight: 1, whiteSpace: "nowrap" }}
+                style={{ fontSize: "clamp(18px, 4.2vw, 52px)", letterSpacing: "0.05em", lineHeight: 1, whiteSpace: "nowrap" }}
               >
                 <span className="text-white">+7 (985) </span>
                 <span style={{ color: "#FF3333" }}>361-55-17</span>
@@ -339,21 +292,17 @@ const Index = () => {
             </div>
             <div style={{ width: "2px", height: "50%", background: "rgba(204,0,0,0.5)" }} />
             <div className="flex items-center gap-2">
-              <Icon name="MapPin" size={11} style={{ color: "#CC0000", flexShrink: 0 }} />
+              <Icon name="MapPin" size={13} style={{ color: "#CC0000", flexShrink: 0 }} />
               <span
                 className="font-oswald text-white uppercase"
-                style={{ fontSize: "clamp(9px, 1.7vw, 21px)", letterSpacing: "0.08em", whiteSpace: "nowrap" }}
+                style={{ fontSize: "clamp(10px, 1.9vw, 24px)", letterSpacing: "0.08em", whiteSpace: "nowrap" }}
               >
                 ул. Корнилаева, 16
               </span>
             </div>
           </div>
 
-          {/* Нижняя красная линия */}
-          <div
-            className="absolute bottom-0 left-0 right-0"
-            style={{ height: "3px", background: "#CC0000", zIndex: 2 }}
-          />
+          <div className="absolute bottom-0 left-0 right-0" style={{ height: "3px", background: "#CC0000", zIndex: 2 }} />
         </div>
       </div>
     </div>
