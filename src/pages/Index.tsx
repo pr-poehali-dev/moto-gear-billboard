@@ -185,7 +185,7 @@ const Index = () => {
                Карточки уменьшены: flex 0.8 вместо 1, чтобы оставалось больше воздуха.
           */}
           <div
-            className="relative flex items-stretch"
+            className="relative flex items-stretch py-[23px]"
             style={{
               zIndex: 1,
               gap: "clamp(3px, 0.45vw, 6px)",
