@@ -59,69 +59,57 @@ const Index = () => {
         {/* ══ ROW 2: ОСНОВНАЯ ЗОНА ══ */}
         <div className="relative z-10 flex flex-1 min-h-0" style={{ padding: "clamp(5px, 0.8vw, 12px)", gap: "clamp(5px, 0.8vw, 12px)" }}>
 
-          {/* LEFT — Лого и QR одного размера, вертикально */}
-          <div
-            className="flex flex-col items-center"
-            style={{ width: "16%", gap: "clamp(5px, 0.8vw, 10px)", flexShrink: 0 }}
-          >
-            {/* Лого */}
-            <div
-              style={{
-                flex: 1,
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-              }}
-            >
-              <img
-                src={LOGO_IMAGE}
-                alt="ARMORHEAD"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))",
-                }}
-              />
-            </div>
-
-            {/* QR — того же flex: 1, будет равен по высоте логотипу */}
-            <div
-              style={{
-                flex: 1,
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "clamp(2px, 0.3vw, 4px)",
-              }}
-            >
-              <div
-                style={{
-                  background: "white",
-                  padding: "4px",
-                  border: "2.5px solid #CC0000",
-                  borderRadius: 3,
-                  width: "100%",
-                  aspectRatio: "1/1",
-                }}
-              >
-                <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
-              </div>
-              <span style={{ fontSize: "clamp(5px, 0.55vw, 7px)", color: "rgba(255,255,255,0.35)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-                Сканируй QR
-              </span>
-            </div>
-          </div>
-
           {/* RIGHT — товары + нижняя инфо */}
           <div className="flex flex-col flex-1 min-w-0" style={{ gap: "clamp(4px, 0.6vw, 8px)" }}>
 
-            {/* Ряд товаров */}
+            {/* Ряд товаров + левая колонка (лого+QR) выровнены по одной строке */}
             <div style={{ display: "flex", gap: "clamp(5px, 0.8vw, 12px)", flex: 1 }}>
+
+              {/* LEFT — Лого сверху, QR снизу, вся высота = высота ряда картинок */}
+              <div
+                className="flex flex-col items-center"
+                style={{ width: "clamp(80px, 13vw, 150px)", flexShrink: 0, gap: "clamp(4px, 0.6vw, 8px)" }}
+              >
+                {/* Лого — flex:1 */}
+                <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                  <img
+                    src={LOGO_IMAGE}
+                    alt="ARMORHEAD"
+                    style={{ width: "100%", height: "100%", objectFit: "contain", filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))" }}
+                  />
+                </div>
+
+                {/* Надпись над QR */}
+                <div style={{ flexShrink: 0, textAlign: "center" }}>
+                  <span
+                    className="font-oswald font-bold uppercase"
+                    style={{
+                      fontSize: "clamp(8px, 1.1vw, 14px)",
+                      color: "#FF3333",
+                      letterSpacing: "0.1em",
+                      display: "block",
+                    }}
+                  >
+                    Сканируй QR
+                  </span>
+                </div>
+
+                {/* QR — flex:1, равен лого */}
+                <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-end" }}>
+                  <div
+                    style={{
+                      background: "white",
+                      padding: "4px",
+                      border: "2.5px solid #CC0000",
+                      borderRadius: 3,
+                      width: "100%",
+                      aspectRatio: "1/1",
+                    }}
+                  >
+                    <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                  </div>
+                </div>
+              </div>
               {PRODUCTS.map((p) => (
                 <div
                   key={p.name}
