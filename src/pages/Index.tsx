@@ -34,67 +34,88 @@ const Index = () => {
       >
         {/* Фон */}
         <div className="absolute inset-0">
-          <img src={MOTO_IMAGE} alt="bg" className="w-full h-full object-cover" style={{ objectPosition: "center", opacity: 0.13 }} />
-          <div className="absolute inset-0" style={{ background: "rgba(13,13,13,0.78)" }} />
+          <img src={MOTO_IMAGE} alt="bg" className="w-full h-full object-cover"
+            style={{ objectPosition: "center", opacity: 0.12 }} />
+          <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.82)" }} />
         </div>
 
-        {/* ─── ШАПКА ─── */}
+        {/* ══ ROW 1: ШАПКА — двухцветная ══ */}
         <div
-          className="relative z-10"
+          className="relative z-10 flex items-center justify-center"
           style={{
-            background: "#CC0000",
+            background: "#0D0D0D",
             flexShrink: 0,
-            borderBottom: "2px solid #FF4444",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "clamp(34px, 6.5vw, 56px)",
+            borderBottom: "3px solid #CC0000",
+            height: "clamp(38px, 7vw, 62px)",
+            padding: "0 20px",
           }}
         >
           <span
-            className="font-oswald font-bold text-white uppercase"
+            className="font-oswald font-bold uppercase"
             style={{
-              fontSize: "clamp(14px, 3.2vw, 40px)",
-              letterSpacing: "0.22em",
+              fontSize: "clamp(18px, 4vw, 50px)",
+              letterSpacing: "0.04em",
               lineHeight: 1,
-              display: "block",
             }}
           >
-            Магазин мотоэкипировки
+            <span style={{ color: "#FFFFFF" }}>Магазин </span>
+            <span style={{ color: "#CC0000" }}>мотоэкипировки</span>
           </span>
         </div>
 
-        {/* ─── ОСНОВНОЙ БЛОК ─── */}
+        {/* ══ ROW 2: ОСНОВНАЯ ЗОНА ══ */}
         <div className="relative z-10 flex flex-1 min-h-0">
 
-          {/* LEFT — Логотип */}
+          {/* LEFT — Лого + QR */}
           <div
-            className="flex flex-col justify-center items-center"
+            className="flex flex-col justify-between items-center"
             style={{
-              width: "22%",
-              borderRight: "1px solid rgba(204,0,0,0.35)",
-              padding: "clamp(4px, 0.7vw, 10px)",
+              width: "18%",
+              borderRight: "1px solid rgba(204,0,0,0.3)",
+              padding: "clamp(5px, 0.8vw, 12px) clamp(4px, 0.6vw, 10px)",
             }}
           >
-            <img
-              src={LOGO_IMAGE}
-              alt="ARMORHEAD"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-                filter: "drop-shadow(0 0 16px rgba(204,0,0,0.7))",
-              }}
-            />
+            {/* Лого */}
+            <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img
+                src={LOGO_IMAGE}
+                alt="ARMORHEAD"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))",
+                }}
+              />
+            </div>
+
+            {/* QR */}
+            <div className="flex flex-col items-center" style={{ gap: "clamp(2px, 0.3vw, 4px)", flexShrink: 0 }}>
+              <div
+                style={{
+                  background: "white",
+                  padding: "4px",
+                  border: "2px solid #CC0000",
+                  borderRadius: 2,
+                  width: "clamp(55px, 9vw, 105px)",
+                  height: "clamp(55px, 9vw, 105px)",
+                }}
+              >
+                <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              </div>
+              <span style={{ fontSize: "clamp(5px, 0.55vw, 7px)", color: "rgba(255,255,255,0.35)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                Сканируй QR
+              </span>
+            </div>
           </div>
 
-          {/* CENTER — Товары сверху, инфо снизу */}
+          {/* CENTER — товары на всю ширину + инфо внизу */}
           <div
             className="flex flex-col flex-1"
-            style={{ padding: "clamp(4px, 0.7vw, 10px) clamp(5px, 0.9vw, 14px)" }}
+            style={{ padding: "clamp(5px, 0.8vw, 12px) clamp(5px, 0.8vw, 12px)" }}
           >
-            {/* Фото товаров */}
-            <div style={{ display: "flex", gap: "clamp(4px, 0.7vw, 10px)", height: "58%" }}>
+            {/* Ряд товаров — занимает максимум высоты */}
+            <div style={{ display: "flex", gap: "clamp(5px, 0.8vw, 12px)", flex: 1 }}>
               {PRODUCTS.map((p) => (
                 <div
                   key={p.name}
@@ -103,36 +124,36 @@ const Index = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    gap: "clamp(2px, 0.3vw, 4px)",
+                    gap: "clamp(3px, 0.4vw, 6px)",
+                    minWidth: 0,
                   }}
                 >
                   <div
                     style={{
                       background: "rgba(255,255,255,0.97)",
-                      border: "1.5px solid rgba(204,0,0,0.4)",
-                      borderRadius: 3,
+                      border: "2px solid rgba(204,0,0,0.45)",
+                      borderRadius: 4,
                       width: "100%",
-                      aspectRatio: "1/1",
+                      flex: 1,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       overflow: "hidden",
-                      flexShrink: 0,
                     }}
                   >
                     <img
                       src={p.image}
                       alt={p.name}
                       style={{
-                        width: p.name === "Шлем" ? "110%" : "88%",
-                        height: p.name === "Шлем" ? "110%" : "88%",
+                        width: p.name === "Шлем" ? "108%" : "90%",
+                        height: p.name === "Шлем" ? "108%" : "90%",
                         objectFit: "contain",
                       }}
                     />
                   </div>
                   <span
                     className="font-oswald text-white text-center uppercase"
-                    style={{ fontSize: "clamp(7px, 1vw, 13px)", letterSpacing: "0.06em" }}
+                    style={{ fontSize: "clamp(8px, 1.1vw, 14px)", letterSpacing: "0.07em", flexShrink: 0 }}
                   >
                     {p.name}
                   </span>
@@ -140,104 +161,77 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Надпись про размеры */}
+            {/* Скидка + размеры */}
             <div
-              className="flex items-center gap-2"
-              style={{ marginTop: "clamp(4px, 0.7vw, 10px)" }}
+              className="flex items-center justify-between"
+              style={{ marginTop: "clamp(4px, 0.6vw, 8px)", gap: "clamp(6px, 1vw, 14px)", flexShrink: 0 }}
             >
-              <Icon name="Users" size={13} style={{ color: "#CC0000", flexShrink: 0 }} />
-              <span
-                className="font-oswald text-white uppercase"
-                style={{ fontSize: "clamp(8px, 1.2vw, 15px)", letterSpacing: "0.05em", opacity: 0.9 }}
-              >
-                Много размеров для детей, подростков и взрослых
-              </span>
-            </div>
-
-            {/* Скидка */}
-            <div
-              className="flex items-center gap-2"
-              style={{
-                background: "linear-gradient(90deg, #CC0000, #990000)",
-                padding: "clamp(5px, 0.85vw, 11px) clamp(8px, 1.2vw, 18px)",
-                marginTop: "clamp(4px, 0.6vw, 8px)",
-                clipPath: "polygon(0 0, 100% 0, 97% 100%, 0 100%)",
-                width: "fit-content",
-                flexShrink: 0,
-              }}
-            >
-              <span
-                className="font-oswald font-bold text-white uppercase"
-                style={{ fontSize: "clamp(8px, 1.25vw, 16px)", letterSpacing: "0.05em" }}
-              >
-                При упоминании рекламы —{" "}
-                <span style={{ fontSize: "clamp(11px, 1.8vw, 22px)", color: "#FFE066" }}>
-                  скидка 10%
+              <div className="flex items-center gap-1.5">
+                <Icon name="Users" size={12} style={{ color: "#CC0000", flexShrink: 0 }} />
+                <span
+                  className="font-oswald text-white uppercase"
+                  style={{ fontSize: "clamp(7px, 1.05vw, 13px)", letterSpacing: "0.04em", opacity: 0.88 }}
+                >
+                  Много размеров для детей, подростков и взрослых
                 </span>
-              </span>
-              <Icon name="Tag" size={13} className="text-yellow-300 flex-shrink-0" />
+              </div>
+              <div
+                className="flex items-center gap-1.5"
+                style={{
+                  background: "linear-gradient(90deg, #CC0000, #991100)",
+                  padding: "clamp(4px, 0.7vw, 9px) clamp(7px, 1.1vw, 15px)",
+                  clipPath: "polygon(0 0, 100% 0, 96% 100%, 0 100%)",
+                  flexShrink: 0,
+                }}
+              >
+                <span className="font-oswald font-bold text-white uppercase"
+                  style={{ fontSize: "clamp(8px, 1.2vw, 15px)", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>
+                  Упомяни рекламу —{" "}
+                  <span style={{ color: "#FFE066", fontSize: "clamp(10px, 1.6vw, 20px)" }}>скидка 10%</span>
+                </span>
+                <Icon name="Tag" size={12} className="text-yellow-300 flex-shrink-0" />
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* RIGHT — QR + Телефон + Адрес */}
-          <div
-            className="flex flex-col justify-between items-center"
-            style={{
-              width: "24%",
-              borderLeft: "1px solid rgba(204,0,0,0.35)",
-              background: "rgba(0,0,0,0.35)",
-              padding: "clamp(6px, 1vw, 14px) clamp(5px, 0.8vw, 12px)",
-            }}
-          >
-            {/* QR — сверху, крупный */}
-            <div className="flex flex-col items-center gap-1" style={{ flex: 1, justifyContent: "center" }}>
-              <div
-                style={{
-                  width: "clamp(90px, 13.5vw, 155px)",
-                  height: "clamp(90px, 13.5vw, 155px)",
-                  background: "white",
-                  padding: "5px",
-                  borderRadius: "3px",
-                  border: "3px solid #CC0000",
-                }}
-              >
-                <img src={QR_IMAGE} alt="QR" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
-              </div>
-              <div style={{ fontSize: "clamp(5px, 0.6vw, 8px)", color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                Сканируй QR
-              </div>
-            </div>
+        {/* ══ ROW 3: НИЖНЯЯ ПОЛОСА — телефон + адрес по центру ══ */}
+        <div
+          className="relative z-10 flex items-center justify-center gap-6"
+          style={{
+            background: "rgba(0,0,0,0.55)",
+            borderTop: "2px solid #CC0000",
+            flexShrink: 0,
+            height: "clamp(38px, 7vw, 62px)",
+            padding: "0 24px",
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <Icon name="Phone" size={16} style={{ color: "#CC0000", flexShrink: 0 }} />
+            <span
+              className="font-oswald font-bold"
+              style={{
+                fontSize: "clamp(18px, 3.2vw, 40px)",
+                letterSpacing: "0.02em",
+                lineHeight: 1,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span className="text-white">+7 (985) </span>
+              <span style={{ color: "#FF3333" }}>361-55-17</span>
+            </span>
+          </div>
 
-            {/* Телефон — снизу */}
-            <div className="text-center w-full" style={{ flexShrink: 0 }}>
-              <div
-                style={{ fontSize: "clamp(5px, 0.65vw, 8px)", color: "#CC0000", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 2 }}
-              >
-                Звоните
-              </div>
-              <div
-                className="font-oswald font-bold text-center"
-                style={{
-                  fontSize: "clamp(13px, 2.2vw, 27px)",
-                  lineHeight: 1.1,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                <span className="text-white">+7 (985) </span>
-                <span style={{ color: "#FF3333" }}>361-55-17</span>
-              </div>
-            </div>
+          <div style={{ width: "2px", height: "60%", background: "rgba(204,0,0,0.5)" }} />
 
-            {/* Адрес */}
-            <div className="flex items-center gap-1 justify-center">
-              <Icon name="MapPin" size={12} style={{ color: "#CC0000", flexShrink: 0 }} />
-              <span
-                className="font-roboto text-white"
-                style={{ fontSize: "clamp(8px, 1vw, 13px)", opacity: 0.9, whiteSpace: "nowrap" }}
-              >
-                ул. Корнилаева, 16
-              </span>
-            </div>
+          <div className="flex items-center gap-2">
+            <Icon name="MapPin" size={14} style={{ color: "#CC0000", flexShrink: 0 }} />
+            <span
+              className="font-oswald text-white uppercase"
+              style={{ fontSize: "clamp(13px, 2vw, 26px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}
+            >
+              ул. Корнилаева, 16
+            </span>
           </div>
         </div>
 
