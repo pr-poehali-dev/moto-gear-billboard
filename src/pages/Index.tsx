@@ -19,14 +19,25 @@ const PRODUCTS = [
 const Index = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "#111" }}>
+      {/* Обёртка для трапециевидной рамки */}
       <div
-        className="relative w-full overflow-hidden flex flex-col"
         style={{
-          maxWidth: "1150px",
-          aspectRatio: "1150 / 630",
+          position: "relative",
+          maxWidth: "1130px",
+          width: "100%",
+          aspectRatio: "113 / 60",
+          clipPath: "polygon(8.4% 0%, 91.6% 0%, 100% 100%, 0% 100%)",
+          boxShadow: "0 0 60px rgba(204,0,0,0.5)",
+          padding: "4px",
+          background: "#CC0000",
+        }}
+      >
+      <div
+        className="relative w-full h-full flex flex-col"
+        style={{
           background: "#0D0D0D",
-          border: "4px solid #CC0000",
-          boxShadow: "0 0 60px rgba(204,0,0,0.4)",
+          clipPath: "polygon(8.4% 0%, 91.6% 0%, 100% 100%, 0% 100%)",
+          overflow: "hidden",
         }}
       >
         {/* Фон */}
@@ -226,6 +237,7 @@ const Index = () => {
         </div>
 
         <div className="absolute bottom-0 left-0 right-0" style={{ height: "4px", background: "#CC0000" }} />
+      </div>
       </div>
     </div>
   );
