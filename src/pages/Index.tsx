@@ -1,3 +1,4 @@
+import React from "react";
 import Icon from "@/components/ui/icon";
 
 const MOTO_IMAGE =
@@ -24,28 +25,19 @@ const RIGHT_PRODUCTS = [
 // Высота нижней подписи фиксирована — все карточки выровнены по нижней границе
 const LABEL_H = "clamp(20px, 3vw, 38px)";
 
-// Угол трапеции в абсолютных единицах: tg = (8.4% * ширина_баннера) / высота_баннера
-// баннер 113:60 → tg ≈ 0.084 * (113/60) ≈ 0.158
-// Карточка высотой H px → горизонтальный сдвиг = H * 0.158
-// Карточка ~17vw шириной, высота ~(17vw * 113/60 * 0.63) ≈ ~20vw
-// Сдвиг ≈ 20vw * 0.158 ≈ 3.2vw от внешнего края
-// Выражаем через clip-path с calc и vw единицами
-const CLIP_LEFT  = "polygon(calc(3.2vw) 0%, 100% 0%, 100% 100%, 0% 100%)";
-const CLIP_RIGHT = "polygon(0% 0%, calc(100% - 3.2vw) 0%, 100% 100%, 0% 100%)";
-
-const ProductCard = ({ p, clipVariant }: { p: { name: string; sub: string | null; price: string; image: string }; clipVariant?: "left" | "right" }) => (
+const ProductCard = ({ p, outerStyle }: { p: { name: string; sub: string | null; price: string; image: string }; outerStyle?: React.CSSProperties }) => (
   <div
     style={{
       flex: "1 1 0",
       minWidth: 0,
-      clipPath: clipVariant === "left" ? CLIP_LEFT : clipVariant === "right" ? CLIP_RIGHT : undefined,
-      borderRadius: clipVariant ? 0 : 4,
+      borderRadius: 4,
       overflow: "hidden",
       background: "rgba(255,255,255,0.97)",
       border: "1.5px solid rgba(204,0,0,0.45)",
       display: "flex",
       flexDirection: "column",
       position: "relative",
+      ...outerStyle,
     }}
   >
     {/* Цена сверху */}
@@ -204,9 +196,10 @@ const Index = () => {
               overflow: "hidden",
             }}
           >
-            {/* Левые карточки — фиксированная ширина как в 485eed4 */}
+            {/* Левые карточки */}
             <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
-              <ProductCard p={LEFT_PRODUCTS[0]} clipVariant="left" />
+              {/* Крайняя левая — выдвинута в сторону трапеции, трапеция сама срезает угол */}
+              <ProductCard p={LEFT_PRODUCTS[0]} outerStyle={{ marginLeft: "calc(-3.2vw)", paddingLeft: "3.2vw", boxSizing: "border-box" }} />
               <ProductCard p={LEFT_PRODUCTS[1]} />
             </div>
 
@@ -287,10 +280,11 @@ const Index = () => {
               <div style={{ flex: 1, minHeight: 0 }} />
             </div>
 
-            {/* Правые карточки — фиксированная ширина как в 485eed4 */}
+            {/* Правые карточки */}
             <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
               <ProductCard p={RIGHT_PRODUCTS[0]} />
-              <ProductCard p={RIGHT_PRODUCTS[1]} clipVariant="right" />
+              {/* Крайняя правая — выдвинута в сторону трапеции, трапеция сама срезает угол */}
+              <ProductCard p={RIGHT_PRODUCTS[1]} outerStyle={{ marginRight: "calc(-3.2vw)", paddingRight: "3.2vw", boxSizing: "border-box" }} />
             </div>
           </div>
 
