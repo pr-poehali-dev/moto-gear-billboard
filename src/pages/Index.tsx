@@ -164,20 +164,20 @@ const Index = () => {
             style={{
               zIndex: 1,
               background: "linear-gradient(90deg, #AA0000, #CC0000, #AA0000)",
-              padding: "clamp(2px, 0.38vw, 5px) 0",
-              margin: "clamp(3px, 0.45vw, 6px) 12%",
+              padding: "clamp(4px, 0.7vw, 9px) 0",
+              margin: "clamp(3px, 0.45vw, 6px) 6%",
               borderRadius: 2,
             }}
           >
-            <Icon name="Tag" size={10} className="text-yellow-300 flex-shrink-0" />
+            <Icon name="Tag" size={14} className="text-yellow-300 flex-shrink-0" />
             <span
               className="font-oswald font-bold text-white uppercase"
-              style={{ fontSize: "clamp(8px, 1.15vw, 14px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}
+              style={{ fontSize: "clamp(12px, 1.9vw, 24px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}
             >
               При упоминании банера —{" "}
-              <span style={{ color: "#FFE066", fontSize: "clamp(9px, 1.4vw, 17px)" }}>скидка 10%</span>
+              <span style={{ color: "#FFE066", fontSize: "clamp(14px, 2.2vw, 28px)" }}>скидка 10%</span>
             </span>
-            <Icon name="Tag" size={10} className="text-yellow-300 flex-shrink-0" />
+            <Icon name="Tag" size={14} className="text-yellow-300 flex-shrink-0" />
           </div>
 
           {/* ══ ОСНОВНАЯ ЗОНА ══
@@ -284,24 +284,24 @@ const Index = () => {
 
           {/* ══ АССОРТИМЕНТ ══ */}
           <div
-            className="relative flex items-center justify-center gap-2"
+            className="relative flex items-center justify-center gap-3"
             style={{
               zIndex: 1,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(204,0,0,0.45)",
+              background: "rgba(204,0,0,0.15)",
+              border: "1.5px solid rgba(204,0,0,0.6)",
               borderRadius: 3,
-              padding: "clamp(2px, 0.35vw, 4px) clamp(5px, 0.7vw, 9px)",
+              padding: "clamp(4px, 0.7vw, 9px) clamp(8px, 1.2vw, 16px)",
               margin: "clamp(2px, 0.35vw, 5px) clamp(4px, 0.6vw, 8px)",
               flexShrink: 0,
             }}
           >
-            <Icon name="Users" size={11} style={{ color: "#CC0000", flexShrink: 0 }} />
+            <Icon name="Users" size={16} style={{ color: "#FF4444", flexShrink: 0 }} />
             <span
               className="font-oswald font-bold text-white uppercase text-center"
-              style={{ fontSize: "clamp(7px, 0.95vw, 12px)", letterSpacing: "0.05em", whiteSpace: "nowrap" }}
+              style={{ fontSize: "clamp(11px, 1.6vw, 20px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}
             >
               В наличии большой ассортимент —{" "}
-              <span style={{ color: "#CC0000" }}>для детей, подростков, взрослых</span>
+              <span style={{ color: "#FF5555" }}>для детей, подростков, взрослых</span>
             </span>
           </div>
 
