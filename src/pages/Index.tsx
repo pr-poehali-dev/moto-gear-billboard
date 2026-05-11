@@ -10,10 +10,10 @@ const QR_IMAGE =
   "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/6841c3b9-5c51-4fce-b7e2-0c3a6a81f1a1.png";
 
 const PRODUCTS = [
-  { name: "Шлемы", sub: "разные цвета и модели", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
-  { name: "Черепахи", sub: "Рост от 130 до 200 см", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
-  { name: "Перчатки", sub: null, image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
-  { name: "Защита", sub: null, image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
+  { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
+  { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
+  { name: "Перчатки", sub: null, price: "От 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
+  { name: "Защита", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
 const Index = () => {
@@ -128,6 +128,22 @@ const Index = () => {
                     position: "relative",
                   }}
                 >
+                  {/* Цена сверху */}
+                  <div
+                    style={{
+                      position: "absolute", top: 0, left: 0, right: 0,
+                      background: "rgba(0,0,0,0.72)",
+                      padding: "clamp(2px, 0.35vw, 5px) 4px",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      zIndex: 1,
+                    }}
+                  >
+                    <span className="font-oswald font-bold text-center"
+                      style={{ fontSize: "clamp(8px, 1.2vw, 15px)", color: "#FFE066", letterSpacing: "0.04em", lineHeight: 1 }}>
+                      {p.price}
+                    </span>
+                  </div>
+
                   <img
                     src={p.image}
                     alt={p.name}
