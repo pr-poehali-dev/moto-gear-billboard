@@ -53,21 +53,20 @@ const Index = () => {
         >
           {/* Скидка — над картинками, слева */}
           <div
-            className="flex items-center gap-2"
+            className="flex items-center justify-center gap-3"
             style={{
-              background: "linear-gradient(90deg, #CC0000, #991100)",
+              background: "linear-gradient(90deg, #AA0000, #CC0000, #AA0000)",
               padding: "clamp(4px, 0.65vw, 8px) clamp(8px, 1.2vw, 16px)",
-              clipPath: "polygon(0 0, 100% 0, 96% 100%, 0 100%)",
               flexShrink: 0,
-              alignSelf: "flex-start",
             }}
           >
+            <Icon name="Tag" size={14} className="text-yellow-300 flex-shrink-0" />
             <span className="font-oswald font-bold text-white uppercase"
-              style={{ fontSize: "clamp(9px, 1.3vw, 17px)", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>
+              style={{ fontSize: "clamp(10px, 1.5vw, 19px)", letterSpacing: "0.06em", whiteSpace: "nowrap" }}>
               При упоминании банера —{" "}
-              <span style={{ color: "#FFE066", fontSize: "clamp(11px, 1.7vw, 22px)" }}>скидка 10%</span>
+              <span style={{ color: "#FFE066", fontSize: "clamp(12px, 1.9vw, 24px)" }}>скидка 10%</span>
             </span>
-            <Icon name="Tag" size={13} className="text-yellow-300 flex-shrink-0" />
+            <Icon name="Tag" size={14} className="text-yellow-300 flex-shrink-0" />
           </div>
 
           {/* Ряд: лого+QR слева, картинки справа */}
@@ -79,11 +78,11 @@ const Index = () => {
               style={{ width: "clamp(80px, 13vw, 150px)", flexShrink: 0, gap: "clamp(4px, 0.6vw, 8px)" }}
             >
               {/* Лого */}
-              <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+              <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-start", justifyContent: "center", overflow: "hidden" }}>
                 <img
                   src={LOGO_IMAGE}
                   alt="ARMORHEAD"
-                  style={{ width: "100%", height: "100%", objectFit: "contain", filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))" }}
+                  style={{ width: "100%", objectFit: "contain", filter: "drop-shadow(0 0 14px rgba(204,0,0,0.65))" }}
                 />
               </div>
 
@@ -162,8 +161,8 @@ const Index = () => {
             <Icon name="Users" size={15} style={{ color: "#CC0000", flexShrink: 0 }} />
             <span className="font-oswald font-bold text-white uppercase"
               style={{ fontSize: "clamp(10px, 1.4vw, 18px)", letterSpacing: "0.05em" }}>
-              Много размеров —{" "}
-              <span style={{ color: "#CC0000" }}>дети, подростки, взрослые</span>
+              В наличии большой ассортимент —{" "}
+              <span style={{ color: "#CC0000" }}>для детей, подростков, взрослых</span>
             </span>
           </div>
         </div>
