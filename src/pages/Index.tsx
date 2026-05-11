@@ -209,13 +209,13 @@ const Index = () => {
                 justifyContent: "flex-start",
               }}
             >
-              {/* Лого — квадрат, тонкая рамка */}
+              {/* Лого — квадрат, тонкая рамка, немного опущен */}
               <div
                 style={{
                   width: "100%",
                   aspectRatio: "1 / 1",
                   flexShrink: 0,
-                  border: "1px solid rgba(255,255,255,0.6)",
+                  outline: "1px solid rgba(255,255,255,0.6)",
                   borderRadius: 4,
                   background: "#fff",
                   display: "flex",
@@ -223,6 +223,7 @@ const Index = () => {
                   justifyContent: "center",
                   padding: "2px",
                   boxSizing: "border-box",
+                  marginTop: "clamp(6px, 1.2vw, 16px)",
                 }}
               >
                 <img
