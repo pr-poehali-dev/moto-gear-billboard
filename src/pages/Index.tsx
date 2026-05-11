@@ -195,7 +195,7 @@ const Index = () => {
                Карточки уменьшены: flex 0.8 вместо 1, чтобы оставалось больше воздуха.
           */}
           <div
-            className="relative flex items-stretch"
+            className="relative flex items-stretch justify-center"
             style={{
               zIndex: 1,
               gap: "clamp(3px, 0.45vw, 6px)",
@@ -204,8 +204,8 @@ const Index = () => {
               overflow: "hidden",
             }}
           >
-            {/* Левые карточки */}
-            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
+            {/* Левые карточки — фиксированная ширина как в 485eed4 */}
+            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
               <ProductCard p={LEFT_PRODUCTS[0]} clipVariant="left" />
               <ProductCard p={LEFT_PRODUCTS[1]} />
             </div>
@@ -287,8 +287,8 @@ const Index = () => {
               <div style={{ flex: 1, minHeight: 0 }} />
             </div>
 
-            {/* Правые карточки */}
-            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ flex: "1.6 1 0", minWidth: 0 }}>
+            {/* Правые карточки — фиксированная ширина как в 485eed4 */}
+            <div className="flex gap-[clamp(3px,0.45vw,6px)]" style={{ width: "34%", flexShrink: 0 }}>
               <ProductCard p={RIGHT_PRODUCTS[0]} />
               <ProductCard p={RIGHT_PRODUCTS[1]} clipVariant="right" />
             </div>
