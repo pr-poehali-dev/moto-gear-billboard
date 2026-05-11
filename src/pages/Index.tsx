@@ -199,7 +199,7 @@ const Index = () => {
             style={{
               zIndex: 1,
               gap: "clamp(3px, 0.45vw, 6px)",
-              padding: "clamp(6px, 1.2vw, 14px) 6.5% clamp(2px, 0.3vw, 4px)",
+              padding: "clamp(6px, 1.2vw, 14px) clamp(3px, 0.45vw, 6px) clamp(2px, 0.3vw, 4px)",
               minHeight: 0,
               overflow: "hidden",
             }}
