@@ -14,10 +14,10 @@ const AVITO_IMAGE =
 
 const LEFT_PRODUCTS = [
   { name: "Перчатки", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/e23edbee-8280-4fc3-b1b3-3c05dd87d008.jpg" },
-  { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
+  { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
 ];
 const RIGHT_PRODUCTS = [
-  { name: "Шлемы", sub: "разные цвета и модели", price: "От 2 790 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/cf0a68c7-7017-4928-b215-f4fbe2f7f80d.png" },
+  { name: "Черепахи", sub: "Рост от 130 до 200 см", price: "От 2 490 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/78a75afc-2ae1-4ff5-8722-c788e7204a05.jpg" },
   { name: "Защита", sub: null, price: "От 990 ₽", image: "https://cdn.poehali.dev/projects/4834ddfa-b5b1-416f-90be-792df54ccf24/bucket/ae305737-01dd-4826-9f38-8e6793636877.jpg" },
 ];
 
@@ -46,35 +46,35 @@ const ProductCard = ({ p }: { p: { name: string; sub: string | null; price: stri
     >
       <span
         className="font-oswald font-bold text-center"
-        style={{ fontSize: "clamp(6px, 1vw, 13px)", color: "#fff", letterSpacing: "0.03em", lineHeight: 1 }}
+        style={{ fontSize: "clamp(9px, 1.4vw, 18px)", color: "#fff", letterSpacing: "0.03em", lineHeight: 1 }}
       >
         {p.price}
       </span>
     </div>
-    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0, padding: "2px" }}>
-      <img src={p.image} alt={p.name} style={{ maxWidth: "96%", maxHeight: "96%", objectFit: "contain" }} />
+    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", minHeight: 0, padding: "1px" }}>
+      <img src={p.image} alt={p.name} style={{ maxWidth: "99%", maxHeight: "99%", objectFit: "contain" }} />
     </div>
     <div
       style={{
         background: "rgba(180,0,0,0.88)",
-        padding: "clamp(1px, 0.25vw, 3px) 2px",
+        padding: "clamp(2px, 0.4vw, 5px) 4px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: 1,
+        gap: 2,
         flexShrink: 0,
       }}
     >
       <span
         className="font-oswald font-bold text-white text-center uppercase"
-        style={{ fontSize: "clamp(6px, 0.85vw, 11px)", letterSpacing: "0.07em", lineHeight: 1 }}
+        style={{ fontSize: "clamp(9px, 1.3vw, 17px)", letterSpacing: "0.07em", lineHeight: 1 }}
       >
         {p.name}
       </span>
       <span
         className="font-roboto text-white text-center"
-        style={{ fontSize: "clamp(4px, 0.5vw, 6px)", opacity: p.sub ? 0.9 : 0, letterSpacing: "0.03em", lineHeight: 1 }}
+        style={{ fontSize: "clamp(6px, 0.8vw, 10px)", opacity: p.sub ? 0.9 : 0, letterSpacing: "0.03em", lineHeight: 1 }}
       >
         {p.sub ?? " "}
       </span>
@@ -177,7 +177,7 @@ const Index = () => {
             style={{
               zIndex: 1,
               gap: "clamp(3px, 0.45vw, 6px)",
-              padding: "clamp(2px, 0.3vw, 4px) 6.5%",
+              padding: "clamp(6px, 1.2vw, 14px) 6.5% clamp(2px, 0.3vw, 4px)",
               minHeight: 0,
               overflow: "hidden",
             }}
